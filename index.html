@@ -5,6 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Академия Знаний — Подготовка к ОГЭ и ЕГЭ</title>
 <meta name="description" content="Репетиторский центр «Академия Знаний». Подготовка к ОГЭ и ЕГЭ с гарантией системного результата. Offline / Online.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://grach5.github.io/akademia-znaniy/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Академия Знаний">
+<meta property="og:title" content="Академия Знаний — подготовка к ОГЭ и ЕГЭ">
+<meta property="og:description" content="Репетиторский центр с гарантией системного результата. Offline / Online. Записывайтесь на занятия.">
+<meta property="og:url" content="https://grach5.github.io/akademia-znaniy/">
+<meta property="og:image" content="https://grach5.github.io/akademia-znaniy/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Академия Знаний — подготовка к ОГЭ и ЕГЭ">
+<meta name="twitter:description" content="Репетиторский центр с гарантией системного результата. Offline / Online.">
+<meta name="twitter:image" content="https://grach5.github.io/akademia-znaniy/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Академия Знаний",
+  "description": "Репетиторский центр. Подготовка к ОГЭ и ЕГЭ с гарантией системного результата. Offline и Online.",
+  "url": "https://grach5.github.io/akademia-znaniy/",
+  "image": "https://grach5.github.io/akademia-znaniy/og-image.png",
+  "areaServed": "RU",
+  "knowsAbout": ["Подготовка к ОГЭ", "Подготовка к ЕГЭ", "Математика", "Физика", "Русский язык"],
+  "offers": {
+    "@type": "Offer",
+    "category": "Подготовка к экзаменам",
+    "priceCurrency": "RUB",
+    "price": "5000"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -260,6 +297,34 @@
   }
   /* a11y */
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* ===== GUARANTEE SEAL ===== */
+  .seal{position:absolute;z-index:4;left:-26px;bottom:-26px;width:116px;height:116px;border-radius:50%;background:var(--red);box-shadow:0 14px 34px rgba(225,6,0,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);border:2px solid rgba(255,255,255,.25)}
+  .seal::before{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.45);border-radius:50%}
+  .seal span{color:#fff;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1}
+  .seal .seal-big{font-size:30px;margin:3px 0;line-height:.8}
+
+  /* ===== RESULTS / SOCIAL PROOF ===== */
+  .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+  .r-card{position:relative;background:var(--black-2);border:1px solid var(--line);padding:30px 28px;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s;overflow:hidden}
+  .r-card::after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;background:var(--red);opacity:.07;transform:rotate(12deg)}
+  .r-card:hover{transform:translateY(-6px);border-color:rgba(225,6,0,.5)}
+  .r-score{font-family:var(--serif);font-size:58px;font-weight:500;line-height:.9;color:var(--red)}
+  .r-score em{font-size:19px;color:var(--grey);font-style:normal}
+  .r-sub{font-size:12px;letter-spacing:.1em;color:var(--grey);text-transform:uppercase;margin:8px 0 18px}
+  .r-card p{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;color:var(--white);position:relative;z-index:1}
+  .r-card .who{margin-top:16px;font-size:13px;color:var(--grey)}
+  .r-card .who b{color:var(--white);font-weight:500}
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .mcta{display:none}
+  @media(max-width:760px){
+    .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1100;gap:10px;padding:10px 14px;background:rgba(10,10,10,.93);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+    .mcta a{flex:1;justify-content:center;padding:13px 10px;font-size:13.5px}
+    body{padding-bottom:70px}
+    .seal{width:96px;height:96px;left:-14px}
+    .seal span{font-size:10px}.seal .seal-big{font-size:25px}
+  }
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
 </style>
 </head>
@@ -273,6 +338,7 @@
     <nav class="nav-links" aria-label="Основная навигация">
       <a href="#founder">Основатель</a>
       <a href="#teachers">Преподаватели</a>
+      <a href="#results">Результаты</a>
       <a href="#course">Курс</a>
       <a href="#contact">Контакты</a>
     </nav>
@@ -305,6 +371,7 @@
       <div class="cutout" style="display:block">
         <div class="plate hero-plate"></div>
         <div class="hero-stamp">основатель центра<b>Преподаватель<br>математики</b></div>
+        <div class="seal" role="img" aria-label="Гарантия системного результата"><span>Гарантия</span><span class="seal-big" aria-hidden="true">✓</span><span>результата</span></div>
         <figure class="photo hero-photo">
           <!-- Замените на фото основателя: <img src="founder.jpg" alt="Основатель центра"> -->
           <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя<br><small style="opacity:.6">вставьте изображение сюда</small></div>
@@ -425,6 +492,38 @@
 
 <div class="wrap"><div class="divider"></div></div>
 
+<!-- ============ RESULTS / SOCIAL PROOF ============ -->
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head ro">
+      <div class="eyebrow">Результаты</div>
+      <h2>Баллы, которые говорят <em>сами за себя</em></h2>
+    </div>
+    <div class="results-grid">
+      <div class="r-card ro">
+        <div class="r-score">— <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · предмет</div>
+        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
+        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+      </div>
+      <div class="r-card ro d1">
+        <div class="r-score">— <em>/ 100</em></div>
+        <div class="r-sub">ОГЭ · предмет</div>
+        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
+        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+      </div>
+      <div class="r-card ro d2">
+        <div class="r-score">— <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · предмет</div>
+        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
+        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
 <!-- ============ COURSE ============ -->
 <section id="course">
   <div class="wrap">
@@ -490,6 +589,12 @@
     <span>© 2026 · Все права защищены</span>
   </div>
 </footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="mcta" aria-label="Быстрые действия">
+  <a href="tel:+70000000000" class="btn">Позвонить</a>
+  <a href="#contact" class="btn solid">Записаться</a>
+</div>
 
 <script>
   // header background on scroll

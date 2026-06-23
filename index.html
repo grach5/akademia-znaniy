@@ -3,9 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Академия Знаний — Подготовка к ОГЭ и ЕГЭ</title>
-<meta name="description" content="Репетиторский центр «Академия Знаний». Подготовка к ОГЭ и ЕГЭ с гарантией системного результата. Offline / Online.">
+<title>Подготовка к ОГЭ и ЕГЭ — репетиторский центр «Академия Знаний»</title>
+<meta name="description" content="Репетиторский центр «Академия Знаний»: подготовка к ОГЭ и ЕГЭ по математике, физике и русскому языку с гарантией системного результата. Занятия offline и online, от 3 500 ₽. Записывайтесь.">
+<meta name="keywords" content="подготовка к ОГЭ, подготовка к ЕГЭ, репетитор по математике, репетитор по физике, репетитор по русскому языку, репетиторский центр, подготовка к экзаменам, ОГЭ, ЕГЭ, онлайн репетитор">
+<meta name="author" content="Академия Знаний">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0a0a0a">
+<!-- Локальное SEO: укажите город центра в title, H1, описании и в адресе Schema ниже -->
+<!-- <meta name="geo.region" content="RU-XXX"> <meta name="geo.placename" content="ГОРОД"> -->
+<!-- Подтверждение прав в вебмастерах (вставьте свои коды): -->
+<!-- <meta name="yandex-verification" content="КОД"> -->
+<!-- <meta name="google-site-verification" content="КОД"> -->
 <link rel="canonical" href="https://grach5.github.io/akademia-znaniy/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -27,18 +35,24 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
+  "@id": "https://grach5.github.io/akademia-znaniy/#org",
   "name": "Академия Знаний",
-  "description": "Репетиторский центр. Подготовка к ОГЭ и ЕГЭ с гарантией системного результата. Offline и Online.",
+  "description": "Репетиторский центр. Подготовка к ОГЭ и ЕГЭ по математике, физике и русскому языку с гарантией системного результата. Offline и Online.",
   "url": "https://grach5.github.io/akademia-znaniy/",
   "image": "https://grach5.github.io/akademia-znaniy/og-image.png",
+  "logo": "https://grach5.github.io/akademia-znaniy/favicon.svg",
+  "priceRange": "от 3 500 ₽",
   "areaServed": "RU",
   "knowsAbout": ["Подготовка к ОГЭ", "Подготовка к ЕГЭ", "Математика", "Физика", "Русский язык"],
-  "offers": {
-    "@type": "Offer",
-    "category": "Подготовка к экзаменам",
-    "priceCurrency": "RUB",
-    "price": "5000"
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги подготовки к экзаменам",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Course", "name": "Подготовка по математике (ОГЭ/ЕГЭ)", "provider": { "@type": "EducationalOrganization", "name": "Академия Знаний" } }, "priceCurrency": "RUB", "price": "5000" },
+      { "@type": "Offer", "itemOffered": { "@type": "Course", "name": "Подготовка по физике (ОГЭ/ЕГЭ)", "provider": { "@type": "EducationalOrganization", "name": "Академия Знаний" } }, "priceCurrency": "RUB", "price": "3500" },
+      { "@type": "Offer", "itemOffered": { "@type": "Course", "name": "Подготовка по русскому языку (ОГЭ/ЕГЭ)", "provider": { "@type": "EducationalOrganization", "name": "Академия Знаний" } }, "priceCurrency": "RUB", "price": "3500" }
+    ]
   }
 }
 </script>
@@ -340,6 +354,7 @@
       <a href="#teachers">Преподаватели</a>
       <a href="#results">Результаты</a>
       <a href="#course">Курс</a>
+      <a href="#faq">Вопросы</a>
       <a href="#contact">Контакты</a>
     </nav>
     <a href="#contact" class="btn">Записаться <span aria-hidden="true">→</span></a>
@@ -561,6 +576,53 @@
     </div>
   </div>
 </section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head ro">
+      <div class="eyebrow">Частые вопросы</div>
+      <h2>Коротко о&nbsp;<em>главном</em></h2>
+    </div>
+    <div class="faq-list" style="max-width:760px">
+      <div class="reveal-block" data-reveal>
+        <button class="reveal-trigger" aria-expanded="false">К&nbsp;каким экзаменам вы&nbsp;готовите? <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-body"><div class="reveal-inner">Готовим к&nbsp;ОГЭ и&nbsp;ЕГЭ по&nbsp;математике, физике и&nbsp;русскому языку. Программа выстроена системно&nbsp;— от&nbsp;диагностики пробелов до&nbsp;разбора реальных заданий экзамена.</div></div>
+      </div>
+      <div class="reveal-block" data-reveal>
+        <button class="reveal-trigger" aria-expanded="false">Занятия проходят онлайн или очно? <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-body"><div class="reveal-inner">И&nbsp;так, и&nbsp;так. Доступны оба формата&nbsp;— offline и&nbsp;online&nbsp;— вы&nbsp;выбираете удобный.</div></div>
+      </div>
+      <div class="reveal-block" data-reveal>
+        <button class="reveal-trigger" aria-expanded="false">Сколько стоит занятие? <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-body"><div class="reveal-inner">Стоимость занятий&nbsp;— от&nbsp;3&nbsp;500&nbsp;₽ у&nbsp;преподавателей и&nbsp;от&nbsp;5&nbsp;000&nbsp;₽ у&nbsp;основателя центра. Для&nbsp;отдельного курса подготовки действует сниженная цена на&nbsp;первый поток.</div></div>
+      </div>
+      <div class="reveal-block" data-reveal>
+        <button class="reveal-trigger" aria-expanded="false">Кто проводит занятия? <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-body"><div class="reveal-inner">Основатель центра&nbsp;— преподаватель математики, а&nbsp;также практикующие преподаватели по&nbsp;физике (опыт более&nbsp;10&nbsp;лет) и&nbsp;русскому языку. Подробнее&nbsp;— в&nbsp;разделе «Преподаватели».</div></div>
+      </div>
+      <div class="reveal-block" data-reveal>
+        <button class="reveal-trigger" aria-expanded="false">Как записаться на&nbsp;занятие? <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-body"><div class="reveal-inner">Позвоните или напишите нам в&nbsp;мессенджер&nbsp;— ответим на&nbsp;любой вопрос и&nbsp;подберём преподавателя и&nbsp;формат. Контакты&nbsp;— в&nbsp;разделе ниже.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "К каким экзаменам готовит центр «Академия Знаний»?", "acceptedAnswer": { "@type": "Answer", "text": "Готовим к ОГЭ и ЕГЭ по математике, физике и русскому языку. Программа выстроена системно — от диагностики пробелов до разбора реальных заданий экзамена." } },
+    { "@type": "Question", "name": "Занятия проходят онлайн или очно?", "acceptedAnswer": { "@type": "Answer", "text": "Доступны оба формата — offline и online. Вы выбираете удобный." } },
+    { "@type": "Question", "name": "Сколько стоит занятие?", "acceptedAnswer": { "@type": "Answer", "text": "Стоимость занятий — от 3 500 ₽ у преподавателей и от 5 000 ₽ у основателя центра. Для отдельного курса действует сниженная цена на первый поток." } },
+    { "@type": "Question", "name": "Кто проводит занятия?", "acceptedAnswer": { "@type": "Answer", "text": "Основатель центра — преподаватель математики, а также практикующие преподаватели по физике (опыт более 10 лет) и русскому языку." } },
+    { "@type": "Question", "name": "Как записаться на занятие?", "acceptedAnswer": { "@type": "Answer", "text": "Позвоните или напишите в мессенджер — мы ответим на любой вопрос, подберём преподавателя и формат занятий." } }
+  ]
+}
+</script>
+
+<div class="wrap"><div class="divider"></div></div>
 
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="contact">

@@ -189,8 +189,8 @@
   .founder-photo{width:100%;aspect-ratio:3/4;clip-path:polygon(0 2%,98% 0,100% 97%,3% 100%)}
   .founder-plate{inset:-20px 22px 22px -20px;transform:rotate(-3deg)}
   .price-badge{
-    position:absolute;z-index:3;left:-26px;bottom:34px;background:var(--black);border:1px solid var(--red);
-    padding:16px 22px;transform:rotate(-2deg);box-shadow:0 16px 40px rgba(0,0,0,.5);
+    position:absolute;z-index:3;left:-20px;top:-18px;background:var(--black);border:1px solid var(--red);
+    padding:14px 20px;transform:rotate(-2deg);box-shadow:0 16px 40px rgba(0,0,0,.5);
   }
   .price-badge span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
   .price-badge b{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--white)}
@@ -339,10 +339,94 @@
     .seal span{font-size:10px}.seal .seal-big{font-size:25px}
   }
 
+  /* ===== BACKGROUND FORMULAS CANVAS ===== */
+  #bg-formulas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.45}
+  header,section,footer,.mcta{position:relative;z-index:1}
+
+  /* ===== HERO NAMING BLOCK ===== */
+  .hero-center{text-align:center;width:100%}
+  .namemark{display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:8px}
+  .namemark .en{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,82px);line-height:.92;letter-spacing:.01em;text-align:right}
+  .namemark .en b{color:var(--red);font-weight:500}
+  .namemark .vline{width:1px;align-self:stretch;min-height:70px;background:rgba(245,243,239,.25)}
+  .namemark .ru{text-align:left}
+  .namemark .ru .ru-name{font-family:var(--serif);font-size:clamp(34px,5vw,64px);font-weight:400;line-height:1}
+  .namemark .ru .ru-name b{color:var(--red);font-weight:500}
+  .namemark .ru .ru-sub{font-size:13.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-top:10px}
+  .hero-center .lead-script{margin:4px 0 34px;transform:rotate(-2deg)}
+
+  /* centered founder */
+  .founder-hero{max-width:440px;margin:0 auto;width:100%}
+  .founder-hero .hero-photo{aspect-ratio:4/5;clip-path:polygon(2% 0,100% 3%,97% 100%,0 96%)}
+  .founder-name2{margin-top:34px;max-width:640px;margin-left:auto;margin-right:auto}
+  .founder-name2 .nm{font-family:var(--serif);font-size:clamp(26px,3.4vw,42px);font-weight:400;line-height:1.05}
+  .founder-name2 .role{display:inline-flex;align-items:center;gap:12px;color:var(--grey);font-size:14px;letter-spacing:.02em;margin-top:10px}
+  .founder-name2 .role::before,.founder-name2 .role::after{content:"";width:24px;height:1px;background:var(--red)}
+  .founder-name2 .reveal-block{text-align:left}
+  .founder-actions{margin-top:6px}
+
+  /* attention "!" button on photo */
+  .excl{position:absolute;z-index:4;right:-16px;top:-18px;width:54px;height:54px;border-radius:50%;
+    background:var(--red);color:#fff;border:none;cursor:pointer;font-family:var(--serif);font-weight:500;
+    font-size:32px;line-height:1;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(225,6,0,.45);animation:exclpulse 2.2s ease-in-out infinite}
+  .excl::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--red);animation:exclring 2.2s ease-out infinite}
+  @keyframes exclpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @keyframes exclring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+  .excl:hover{background:var(--red-deep)}
+
+  /* teacher photo zoom on hover */
+  .t-photo{overflow:hidden}
+  .t-photo>*{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .t-card:hover .t-photo>*{transform:scale(1.12)}
+
+  /* reviews button + modal */
+  .btn-rev{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:12.5px;
+    letter-spacing:.03em;padding:9px 16px;border:1px solid var(--line);color:var(--white);background:transparent;
+    cursor:pointer;border-radius:30px;transition:border-color .3s,background .3s}
+  .btn-rev:hover{border-color:var(--red);background:rgba(225,6,0,.08)}
+  .btn-rev i{width:6px;height:6px;border-radius:50%;background:var(--red)}
+  .rev-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:24px;
+    background:rgba(5,5,5,.86);backdrop-filter:blur(8px)}
+  .rev-modal.open{display:flex}
+  .rev-stage{position:relative;max-width:540px;width:100%}
+  .rev-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .rev-head .rt{font-family:var(--serif);font-size:24px}
+  .rev-head .rt em{color:var(--red);font-style:italic}
+  .rev-close{background:none;border:1px solid var(--line);color:var(--white);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;transition:border-color .3s}
+  .rev-close:hover{border-color:var(--red)}
+  .rev-track{position:relative;min-height:240px}
+  .rev-slide{display:none;animation:revfade .4s ease}
+  .rev-slide.active{display:block}
+  @keyframes revfade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  .rev-card{background:var(--black-2);border:1px solid var(--line);border-radius:14px;padding:30px 28px;position:relative;overflow:hidden}
+  .rev-card::after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;background:var(--red);opacity:.07;transform:rotate(12deg)}
+  .rev-card .score{font-family:var(--serif);font-size:54px;font-weight:500;color:var(--red);line-height:.9}
+  .rev-card .score em{font-size:18px;color:var(--grey);font-style:normal}
+  .rev-card .sub{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin:8px 0 16px}
+  .rev-card p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.5;position:relative;z-index:1}
+  .rev-card .who{margin-top:16px;font-size:13px;color:var(--grey)}
+  .rev-card .who b{color:var(--white);font-weight:500}
+  .rev-card .shot-hint{margin-top:14px;font-size:11.5px;color:var(--red)}
+  .rev-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+  .rev-arrow{background:none;border:1px solid var(--line);color:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;transition:border-color .3s,background .3s}
+  .rev-arrow:hover{border-color:var(--red);background:rgba(225,6,0,.1)}
+  .rev-dots{display:flex;gap:8px}
+  .rev-dots span{width:8px;height:8px;border-radius:50%;background:rgba(245,243,239,.2);cursor:pointer;transition:background .3s}
+  .rev-dots span.on{background:var(--red)}
+  .rev-count{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--grey)}
+
+  @media(max-width:600px){
+    .namemark{gap:16px}
+    .namemark .vline{min-height:48px}
+    .excl{width:46px;height:46px;font-size:26px;right:-6px}
+  }
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<canvas id="bg-formulas" aria-hidden="true"></canvas>
 <p class="sr-only">Академия Знаний — репетиторский центр подготовки к ОГЭ и ЕГЭ с гарантией системного результата. Offline и Online.</p>
 
 <!-- ============ HEADER ============ -->
@@ -350,9 +434,9 @@
   <div class="wrap nav">
     <a class="brand" href="#top">Академия <b>Знаний</b></a>
     <nav class="nav-links" aria-label="Основная навигация">
-      <a href="#founder">Основатель</a>
+      <a href="#top">О центре</a>
       <a href="#teachers">Преподаватели</a>
-      <a href="#results">Результаты</a>
+      <a href="#reviews">Отзывы</a>
       <a href="#course">Курс</a>
       <a href="#faq">Вопросы</a>
       <a href="#contact">Контакты</a>
@@ -363,79 +447,58 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="hero-kicker eyebrow">Репетиторский центр</div>
-      <h1>Академия<br><em>Знаний</em></h1>
-      <span class="struck" aria-hidden="true">Академия знаний</span>
-      <div class="lead-script">с гарантией<br>системного результата</div>
-      <p class="subline">Подготовка к&nbsp;ОГЭ и&nbsp;ЕГЭ в&nbsp;формате, где каждый шаг ведёт к&nbsp;баллу. Минимум воды&nbsp;— максимум системы.</p>
-      <div class="hero-tags">
-        <span class="tag"><b>ОГЭ</b></span>
-        <span class="tag"><b>ЕГЭ</b></span>
-        <span class="tag">Offline / Online</span>
-        <span class="tag">от <b>5 000&nbsp;₽</b></span>
+  <div class="wrap hero-center">
+      <div class="namemark">
+        <div class="en">Academy<br>of <b>Knowledge</b></div>
+        <div class="vline" aria-hidden="true"></div>
+        <div class="ru">
+          <div class="ru-name">Академия <b>Знаний</b></div>
+          <div class="ru-sub">Репетиторский центр</div>
+        </div>
       </div>
-      <div class="hero-cta">
-        <a href="#contact" class="btn solid">Записаться на занятие</a>
-        <a href="#teachers" class="btn">Преподаватели</a>
-      </div>
-    </div>
+      <div class="lead-script">с гарантией системного результата</div>
 
-    <div class="hero-photo-wrap">
-      <div class="cutout" style="display:block">
-        <div class="plate hero-plate"></div>
-        <div class="hero-stamp">основатель центра<b>Преподаватель<br>математики</b></div>
-        <div class="seal" role="img" aria-label="Гарантия системного результата"><span>Гарантия</span><span class="seal-big" aria-hidden="true">✓</span><span>результата</span></div>
-        <figure class="photo hero-photo">
-          <!-- Замените на фото основателя: <img src="founder.jpg" alt="Основатель центра"> -->
-          <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя<br><small style="opacity:.6">вставьте изображение сюда</small></div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint" aria-hidden="true"><span>Листайте</span><span class="line"></span></div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- ============ FOUNDER ============ -->
-<section id="founder">
-  <div class="wrap">
-    <div class="founder-grid">
-      <div class="ro">
+      <div class="founder-hero">
         <div class="cutout" style="display:block">
-          <div class="plate founder-plate"></div>
+          <div class="plate hero-plate"></div>
           <div class="price-badge"><span>Стоимость занятий</span><b><em>от</em> 5 000 ₽</b></div>
-          <figure class="photo founder-photo">
-            <!-- <img src="founder-2.jpg" alt="Основатель — преподаватель математики"> -->
-            <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя</div>
+          <div class="seal" role="img" aria-label="Гарантия системного результата"><span>Гарантия</span><span class="seal-big" aria-hidden="true">✓</span><span>результата</span></div>
+          <button class="excl" data-opens="founder-text1" aria-label="Подробнее — текст 1">!</button>
+          <figure class="photo hero-photo">
+            <!-- Замените на фото основателя: <img src="founder.jpg" alt="Основатель центра"> -->
+            <div class="ph-hint"><i aria-hidden="true">◳</i>Моё фото<br><small style="opacity:.6">вставьте изображение сюда</small></div>
           </figure>
         </div>
       </div>
 
-      <div class="founder-copy ro d1">
-        <div class="eyebrow">Основатель</div>
-        <h3 style="margin-top:18px">Я построил центр, в&nbsp;котором <b>учат по системе</b>, а&nbsp;не по&nbsp;учебнику.</h3>
-        <div class="role-line"><span class="dash"></span><span><b style="color:var(--white);font-weight:500">Фамилия Имя Отчество</b>&nbsp;— преподаватель математики, основатель центра</span></div>
+      <div class="founder-name2">
+        <div class="nm">Фамилия Имя Отчество</div>
+        <div class="role">Основатель центра · преподаватель математики</div>
 
-        <div class="reveal-block" data-reveal>
-          <button class="reveal-trigger" aria-expanded="false">Подробнее о&nbsp;подходе <span class="ic" aria-hidden="true"></span></button>
+        <div class="reveal-block" id="founder-text1" data-reveal>
+          <button class="reveal-trigger" aria-expanded="false">Как проходят занятия <span class="ic" aria-hidden="true"></span></button>
           <div class="reveal-body"><div class="reveal-inner">
-            <span class="ph">Текст №1 — заказчик пришлёт</span><br>
-            Здесь раскрывается ключевая информация по&nbsp;запросу клиента: суть авторской методики и&nbsp;того, как именно выстраивается путь ученика к&nbsp;результату. Блок сворачивается, чтобы на&nbsp;первом экране не&nbsp;было лишнего текста.
+            Индивидуальная работа с&nbsp;полным погружением в&nbsp;результат ученика.<br><br>
+            Мы&nbsp;не&nbsp;просто «проходим темы»&nbsp;— выстраиваем стратегию подготовки под конкретную цель: закрываем пробелы, систематизируем знания и&nbsp;доводим до&nbsp;уверенного результата на&nbsp;экзамене.<br><br>
+            Каждое занятие&nbsp;— это точечная работа над слабыми местами и&nbsp;контроль прогресса.<br><br>
+            Формат подойдёт тем, кто хочет максимальный результат в&nbsp;кратчайшие сроки и&nbsp;готов работать на&nbsp;высокий балл.
           </div></div>
         </div>
 
         <div class="reveal-block" data-reveal>
-          <button class="reveal-trigger" aria-expanded="false">Об&nbsp;основателе <span class="ic" aria-hidden="true"></span></button>
+          <button class="reveal-trigger" aria-expanded="false">Подробнее об&nbsp;основателе <span class="ic" aria-hidden="true"></span></button>
           <div class="reveal-body"><div class="reveal-inner">
-            <span class="ph">Текст №2 — заказчик пришлёт</span><br>
-            Персональная история и&nbsp;опыт основателя центра. Развёрнутая версия для&nbsp;тех, кому важны детали&nbsp;— остальные просто идут дальше по&nbsp;сайту.
+            Более 10&nbsp;лет я&nbsp;готовлю учеников к&nbsp;экзаменам и&nbsp;выстраиваю системную подготовку, которая даёт результат даже тем, кто начинал с&nbsp;нуля.<br><br>
+            Моя задача&nbsp;— не&nbsp;просто объяснить тему, а&nbsp;довести ученика до&nbsp;уверенного результата на&nbsp;экзамене.<br><br>
+            Сегодня вокруг меня сформирована команда преподавателей по&nbsp;ключевым предметам, что позволяет закрывать основные запросы учеников в&nbsp;рамках одной системы подготовки.
           </div></div>
+        </div>
+
+        <div class="hero-cta founder-actions">
+          <a href="#contact" class="btn solid">Записаться на&nbsp;занятие</a>
+          <a href="#teachers" class="btn">Преподаватели</a>
         </div>
       </div>
-    </div>
   </div>
 </section>
 
@@ -468,12 +531,15 @@
         </div>
         <div class="t-quote">
           <span class="mark" aria-hidden="true">«</span>
-          <p>Системная подготовка с&nbsp;упором на&nbsp;<span class="ph">[ текст №3&nbsp;— прямая речь преподавателя, заказчик пришлёт ]</span></p>
+          <p>Системная подготовка с&nbsp;упором на&nbsp;понимание процессов, а&nbsp;не&nbsp;механическое заучивание формул.<br><br>
+          Сложные темы объясняются простым и&nbsp;доступным языком, благодаря чему ученик начинает действительно разбираться в&nbsp;предмете, а&nbsp;не&nbsp;«угадывать ответы».<br><br>
+          Формируется база, которая позволяет уверенно решать задания экзаменационного уровня.</p>
         </div>
         <div class="t-foot">
           <div class="t-price"><span>Стоимость занятий</span><b><em>от</em> 3 500 ₽</b></div>
           <div class="fmt"><span><i aria-hidden="true"></i>Offline</span><span><i aria-hidden="true"></i>Online</span></div>
         </div>
+        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-rev="1" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
       </article>
 
       <!-- Алёна -->
@@ -494,12 +560,15 @@
         </div>
         <div class="t-quote">
           <span class="mark" aria-hidden="true">«</span>
-          <p><span class="ph">[ текст №4&nbsp;— прямая речь преподавателя, заказчик пришлёт ]</span></p>
+          <p>Подготовка к&nbsp;экзаменам с&nbsp;акцентом на&nbsp;структуру и&nbsp;глубокое понимание предмета.<br><br>
+          Ученик не&nbsp;просто выполняет задания, а&nbsp;начинает понимать логику языка, что позволяет стабильно показывать высокий результат.<br><br>
+          Работаем на&nbsp;результат, а&nbsp;не&nbsp;на&nbsp;формальный разбор домашних заданий.</p>
         </div>
         <div class="t-foot">
-          <div class="t-price"><span>Стоимость занятий</span><b><em>от</em> 3 500 ₽</b></div>
+          <div class="t-price"><span>Стоимость занятий</span><b><em>от</em> 3 000 ₽</b></div>
           <div class="fmt"><span><i aria-hidden="true"></i>Offline</span><span><i aria-hidden="true"></i>Online</span></div>
         </div>
+        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-rev="2" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
       </article>
     </div>
   </div>
@@ -507,32 +576,53 @@
 
 <div class="wrap"><div class="divider"></div></div>
 
-<!-- ============ RESULTS / SOCIAL PROOF ============ -->
-<section id="results">
+<!-- ============ ОТЗЫВЫ (общий блок) ============ -->
+<section id="reviews">
   <div class="wrap">
     <div class="sec-head ro">
-      <div class="eyebrow">Результаты</div>
-      <h2>Баллы, которые говорят <em>сами за себя</em></h2>
+      <div class="eyebrow">Отзывы</div>
+      <h2>Результаты, которые говорят <em>сами за себя</em></h2>
     </div>
     <div class="results-grid">
       <div class="r-card ro">
-        <div class="r-score">— <em>/ 100</em></div>
-        <div class="r-sub">ЕГЭ · предмет</div>
-        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
-        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+        <div class="r-score">97 <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · математика</div>
+        <p>«Готовился почти с&nbsp;нуля, а&nbsp;на&nbsp;экзамене — 97 баллов. Объясняют так, что наконец всё становится понятно.»</p>
+        <div class="who"><b>Артём</b> · выпускник</div>
       </div>
       <div class="r-card ro d1">
-        <div class="r-score">— <em>/ 100</em></div>
-        <div class="r-sub">ОГЭ · предмет</div>
-        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
-        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+        <div class="r-score">98 <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · физика</div>
+        <p>«Думал, физика&nbsp;— не&nbsp;моё. Разобрали все типы задач, и&nbsp;на&nbsp;экзамене 98.»</p>
+        <div class="who"><b>Дмитрий</b> · выпускник</div>
       </div>
       <div class="r-card ro d2">
-        <div class="r-score">— <em>/ 100</em></div>
-        <div class="r-sub">ЕГЭ · предмет</div>
-        <p>«<span class="ph">[ короткий отзыв ученика — пришлёте ]</span>»</p>
-        <div class="who"><b>Имя ученика</b> · год выпуска</div>
+        <div class="r-score">100 <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · русский язык</div>
+        <p>«Системная подготовка и&nbsp;разбор каждой ошибки. Результат — 100 баллов.»</p>
+        <div class="who"><b>Анна</b> · выпускница</div>
       </div>
+      <div class="r-card ro">
+        <div class="r-score">92 <em>/ 100</em></div>
+        <div class="r-sub">ОГЭ · математика</div>
+        <p>«За три месяца до&nbsp;ОГЭ закрыли все пробелы. Сдал на&nbsp;92 и&nbsp;поступил в&nbsp;профильный класс.»</p>
+        <div class="who"><b>Марк</b> · выпускник</div>
+      </div>
+      <div class="r-card ro d1">
+        <div class="r-score">95 <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · физика</div>
+        <p>«Занимались онлайн, а&nbsp;эффект как от&nbsp;очных. Стабильно решал вторую часть — 95.»</p>
+        <div class="who"><b>Егор</b> · выпускник</div>
+      </div>
+      <div class="r-card ro d2">
+        <div class="r-score">99 <em>/ 100</em></div>
+        <div class="r-sub">ЕГЭ · русский язык</div>
+        <p>«Грамотный план и&nbsp;постоянная обратная связь по&nbsp;работам. Результат — 99 баллов.»</p>
+        <div class="who"><b>Виктория</b> · выпускница</div>
+      </div>
+    </div>
+    <div class="ro" style="text-align:center;margin-top:34px">
+      <button class="btn-rev" data-rev="0" type="button"><i aria-hidden="true"></i>Смотреть все отзывы</button>
     </div>
   </div>
 </section>
@@ -553,7 +643,7 @@
         </div>
         <div class="course-copy">
           <div class="eyebrow">Новый формат</div>
-          <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ и&nbsp;ЕГЭ</em></h3>
+          <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ</em></h3>
           <p class="desc">Отдельная программа подготовки к&nbsp;экзаменам. Минимум текста&nbsp;— вся суть внутри. Нажмите «подробнее», чтобы открыть детали.</p>
 
           <div class="warm-note">Стартовая цена&nbsp;— для&nbsp;прогрева, действует на&nbsp;первый поток</div>
@@ -693,6 +783,170 @@
       window.scrollTo({top:y,behavior:'smooth'});
     });
   });
+</script>
+
+<!-- ============ REVIEWS MODAL ============ -->
+<div class="rev-modal" id="revModal" role="dialog" aria-modal="true" aria-label="Отзывы">
+  <div class="rev-stage">
+    <div class="rev-head">
+      <div class="rt">Отзывы <em>учеников</em></div>
+      <button class="rev-close" id="revClose" type="button" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="rev-track" id="revTrack"></div>
+    <div class="rev-ctrl">
+      <button class="rev-arrow" id="revPrev" type="button" aria-label="Назад">‹</button>
+      <div class="rev-dots" id="revDots"></div>
+      <button class="rev-arrow" id="revNext" type="button" aria-label="Вперёд">›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* "!" открывает текст №1 у основателя */
+  document.querySelectorAll('.excl').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=document.getElementById(b.getAttribute('data-opens'));
+      if(!t)return;
+      if(!t.classList.contains('open')) t.querySelector('.reveal-trigger').click();
+      t.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  });
+
+  /* модалка отзывов (заглушки; заменим реальными скриншотами) */
+  var DATA=[
+    /* 0 — общий (~50) */
+    [ {score:'97',sub:'ЕГЭ · математика',txt:'Честно, до этого сменил двух репетиторов и без толку. Здесь за год разложили всю профильную математику по полочкам, и на ЕГЭ я набрал 97. Сам не ожидал такого результата.',who:'Артём'},
+      {score:'98',sub:'ЕГЭ · физика',txt:'Физику почти не понимал и шёл на тройку. Вячеслав Олегович объяснял каждую тему, пока она не становилась понятной. В итоге сдал на 98 — для меня это космос.',who:'Дмитрий'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Больше всего я боялась сочинения, но с Алёной мы разобрали его по критериям. На экзамене я писала спокойно и набрала 100 баллов!',who:'Анна'},
+      {score:'92',sub:'ОГЭ · математика',txt:'Сын подтянул математику буквально за три месяца до ОГЭ, сдал на 92 и поступил в профильный класс. Спасибо, что нашли подход к ребёнку.',who:'Марина, мама Марка'},
+      {score:'95',sub:'ЕГЭ · физика',txt:'Занимался онлайн из другого города и переживал, что будет хуже очного. Оказалось, абсолютно так же эффективно — вторую часть к концу решал уверенно. 95 баллов.',who:'Егор'},
+      {score:'99',sub:'ЕГЭ · русский язык',txt:'Каждую мою работу подробно разбирали и говорили, что именно улучшить. К экзамену я была полностью готова и набрала 99.',who:'Виктория'},
+      {score:'96',sub:'ЕГЭ · русский язык',txt:'Раньше я просто зубрила правила и всё забывала. Здесь научили понимать логику языка, и сочинение перестало пугать. Результат — 96.',who:'Полина'},
+      {score:'94',sub:'ЕГЭ · физика',txt:'Начинал практически с нуля. На каждом занятии решали именно те задачи, что будут на экзамене. Сдал на 94 и поступил, куда хотел.',who:'Кирилл'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Не верила, что можно набрать 100, но мы дошли до каждой мелочи в сочинении и тесте. Результат говорит сам за себя.',who:'София'},
+      {score:'91',sub:'ЕГЭ · русский язык',txt:'На первом пробнике было всего 70, и я сильно расстроился. Со мной занимались спокойно, без давления, и к ЕГЭ я вышел на 91.',who:'Никита'},
+      {score:'90',sub:'ОГЭ · физика',txt:'Я всегда боялась физику, а тут наоборот выбрала её на ОГЭ и сдала на 90. Спасибо за терпение и понятные объяснения.',who:'Алина'},
+      {score:'88',sub:'ОГЭ · математика',txt:'Геометрия была для меня настоящим кошмаром. Мы разобрали все типы задач, и на ОГЭ я наконец понимал, что делаю. 88 баллов.',who:'Иван'},
+      {score:'94',sub:'ОГЭ · русский язык',txt:'Очень понравилось, что у подготовки была чёткая структура, а не просто проверка домашек. Сдала ОГЭ на 94.',who:'Мария'},
+      {score:'93',sub:'ЕГЭ · физика',txt:'Здесь объясняют не формулы наизусть, а саму суть процессов. Поэтому на экзамене я не растерялся даже на непривычной задаче. 93.',who:'Глеб'},
+      {score:'98',sub:'ЕГЭ · русский язык',txt:'На экзамене сочинение писала уверенно, потому что дома мы прорешали десятки вариантов. 98 баллов, очень довольна.',who:'Дарья'},
+      {score:'85',sub:'ОГЭ · математика',txt:'Сын шёл на тройку, и мы уже почти не надеялись. В итоге ОГЭ на 85. Огромное спасибо, что нашли к нему подход.',who:'Светлана, мама Тимофея'},
+      {score:'97',sub:'ЕГЭ · русский язык',txt:'Прогресс был виден буквально каждую неделю, и это очень мотивировало заниматься дальше. В итоге 97 баллов.',who:'Елизавета'},
+      {score:'96',sub:'ЕГЭ · математика',txt:'Профильная математика наконец стала логичной, а не набором случайных формул. Сдал на 96.',who:'Максим'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Шла на 80, а получила 100. До сих пор не верю. Спасибо за веру в меня и чёткую систему подготовки.',who:'Ксения'},
+      {score:'92',sub:'ЕГЭ · физика',txt:'У меня были серьёзные пробелы ещё с 9 класса. Их закрыли быстро и без лишней воды. В итоге 92 балла.',who:'Артур'},
+      {score:'89',sub:'ОГЭ · русский язык',txt:'Готовились спокойно и по делу, разобрали все типы заданий. ОГЭ сдала на 89 и осталась очень довольна.',who:'Вероника'},
+      {score:'95',sub:'ЕГЭ · математика',txt:'Раньше постоянно терял баллы на оформлении второй части. Меня научили оформлять правильно — и сразу 95.',who:'Роман'},
+      {score:'99',sub:'ЕГЭ · русский язык',txt:'Преподаватель всегда был на связи, любой мой вопрос мы разбирали сразу же. Результат — 99 баллов.',who:'Алиса'},
+      {score:'87',sub:'ОГЭ · физика',txt:'Понял, что физика на самом деле логичная, а не страшная и непонятная. ОГЭ на 87.',who:'Денис'},
+      {score:'94',sub:'ЕГЭ · русский язык',txt:'Шла на экзамен со страхом, а ушла с 94 баллами и поступлением на бюджет. Спасибо вам огромное!',who:'Полина'},
+      {score:'96',sub:'ЕГЭ · физика',txt:'Ни одной темы не оставили недоразобранной. Перед экзаменом я чувствовал себя спокойно и уверенно. 96 баллов.',who:'Степан'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Каждое сочинение мы разбирали строго по критериям, поэтому ошибок почти не осталось. На ЕГЭ — 100.',who:'Милана'},
+      {score:'90',sub:'ОГЭ · математика',txt:'Сын был с двойками по математике, а за полгода вышел на 90. Я в хорошем смысле в шоке. Спасибо!',who:'Ольга, мама Григория'},
+      {score:'97',sub:'ЕГЭ · русский язык',txt:'Очень понравилось, что здесь учат думать, а не зубрить. Поэтому даже на сложных заданиях не теряешься. 97.',who:'Ульяна'},
+      {score:'93',sub:'ЕГЭ · физика',txt:'Я стабильно прибавлял на каждом занятии. К ЕГЭ был уверен в себе и сдал на 93.',who:'Олег'},
+      {score:'95',sub:'ЕГЭ · русский язык',txt:'И сочинение, и тестовую часть мы довели до автоматизма. На экзамене всё было знакомо. 95 баллов.',who:'Аделина'},
+      {score:'88',sub:'ОГЭ · математика',txt:'Геометрия перестала быть страшной — я наконец понял, как строить доказательства. ОГЭ на 88.',who:'Павел'},
+      {score:'98',sub:'ЕГЭ · русский язык',txt:'Теперь я действительно чувствую язык, а не угадываю ответы. Именно это и дало мне 98 баллов.',who:'Виолетта'},
+      {score:'94',sub:'ЕГЭ · физика',txt:'Задачи второй части на экзамене решал почти на автомате — настолько хорошо мы их отработали дома. 94.',who:'Артём'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Самое ценное — на экзамене мне было спокойно, потому что я была готова ко всему. Результат — 100.',who:'Евгения'},
+      {score:'100',sub:'ЕГЭ · физика',txt:'На экзамене я не встретил ни одной незнакомой задачи — всё мы прорешали заранее. 100 баллов.',who:'Игорь'},
+      {score:'92',sub:'ОГЭ · русский язык',txt:'Мы разобрали буквально каждую мою ошибку, и они перестали повторяться. ОГЭ на 92.',who:'Кристина'},
+      {score:'96',sub:'ЕГЭ · математика',txt:'Меня учили понимать, а не действовать по шаблону. Поэтому на новых заданиях я не растерялся. 96.',who:'Лев'},
+      {score:'97',sub:'ЕГЭ · русский язык',txt:'После каждого сочинения я получала подробный разбор, видела свои ошибки и росла. 97 баллов.',who:'Снежана'},
+      {score:'91',sub:'ЕГЭ · физика',txt:'Пришёл с нулевыми знаниями по физике, а за год вышел на 91. Сам не верил, что так смогу.',who:'Владислав'},
+      {score:'99',sub:'ЕГЭ · русский язык',txt:'Был чёткий план до самого экзамена, и я всегда знала, что делать дальше. 99 баллов.',who:'Эвелина'},
+      {score:'89',sub:'ОГЭ · математика',txt:'Со мной подтянули всё, что я упустил в школе за пару лет. ОГЭ сдал на 89.',who:'Матвей'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Я просто доверилась системе и делала то, что говорят. В итоге набрала 100 баллов.',who:'Алёна'},
+      {score:'94',sub:'ЕГЭ · физика',txt:'Перед экзаменом мы прорешали кучу реальных вариантов, поэтому я пришёл совершенно уверенным. 94 балла.',who:'Данил'},
+      {score:'96',sub:'ЕГЭ · русский язык',txt:'Сочинение из моего слабого места превратилось в сильное. Спасибо за поддержку! 96 баллов.',who:'Ангелина'},
+      {score:'90',sub:'ОГЭ · физика',txt:'Раньше я физику терпеть не мог, а тут выбрал её сам и сдал на 90. Объясняют действительно понятно.',who:'Семён'},
+      {score:'98',sub:'ЕГЭ · русский язык',txt:'Всё было чётко, спокойно и по делу, без лишней воды. Именно так мне и хотелось готовиться. 98.',who:'Таисия'},
+      {score:'95',sub:'ЕГЭ · математика',txt:'Мы разобрали всю вторую часть профиля, которую в школе даже не проходили. 95 баллов.',who:'Арсений'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Главное, что мне помогли поверить в себя. А дальше система сделала своё дело — 100 баллов.',who:'Майя'},
+      {score:'93',sub:'ЕГЭ · физика',txt:'Подготовка была системной, без хаоса: всё по плану и понятно. В итоге стабильно сдал на 93.',who:'Богдан'} ],
+    /* 1 — Лобанов (физика) */
+    [ {score:'98',sub:'ЕГЭ · физика',txt:'Вячеслав Олегович объясняет любую тему, пока она не станет очевидной. Сложная механика наконец уложилась у меня в голове. 98 баллов.',who:'Дмитрий'},
+      {score:'95',sub:'ЕГЭ · физика',txt:'Начинал почти с нуля. Каждое занятие — конкретные задачи формата ЕГЭ, ничего лишнего. В итоге сдал на 95.',who:'Кирилл'},
+      {score:'100',sub:'ЕГЭ · физика',txt:'На экзамене мне не попалось ни одной незнакомой задачи — всё мы прорешали заранее. 100 баллов.',who:'Игорь'},
+      {score:'90',sub:'ОГЭ · физика',txt:'Я всегда боялась физику, а с Вячеславом Олеговичем выбрала её на ОГЭ и сдала на 90. Спасибо за терпение!',who:'Алина'},
+      {score:'93',sub:'ЕГЭ · физика',txt:'Он учит понимать суть процессов, а не зубрить формулы. Поэтому встретить новую задачу на экзамене было не страшно. 93.',who:'Глеб'},
+      {score:'96',sub:'ЕГЭ · физика',txt:'Ни одной темы мы не оставили недоразобранной, всё доводили до конца. К ЕГЭ я был совершенно спокоен. 96 баллов.',who:'Степан'},
+      {score:'92',sub:'ЕГЭ · физика',txt:'У меня были большие пробелы с 9 класса, но мы закрыли их быстро и понятно. Результат — 92.',who:'Артур'},
+      {score:'87',sub:'ОГЭ · физика',txt:'Понял, что физика логична, а не набор непонятных формул. ОГЭ сдал на 87.',who:'Денис'},
+      {score:'91',sub:'ЕГЭ · физика',txt:'Пришёл с нулём по физике, а за год дошёл до 91. Сам от себя такого не ожидал.',who:'Владислав'},
+      {score:'90',sub:'ОГЭ · физика',txt:'Раньше физику не любил, а тут выбрал её сам — настолько понятно её здесь объясняют. 90 баллов.',who:'Семён'},
+      {score:'94',sub:'ЕГЭ · физика',txt:'Перед экзаменом мы прорешали много реальных вариантов, поэтому я пришёл уверенным. 94 балла.',who:'Данил'},
+      {score:'93',sub:'ЕГЭ · физика',txt:'Подготовка была системной и спокойной, без зубрёжки. На ЕГЭ стабильно сдал на 93.',who:'Богдан'} ],
+    /* 2 — Алёна (русский) */
+    [ {score:'97',sub:'ЕГЭ · русский язык',txt:'С Алёной русский стал понятным: это не зубрёжка правил, а логика языка. Сочинение перестало меня пугать — 97.',who:'Полина'},
+      {score:'94',sub:'ОГЭ · русский язык',txt:'Очень понравилась чёткая структура подготовки и то, что разбирали каждую ошибку. ОГЭ сдала на 94.',who:'Мария'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Каждое сочинение мы разбирали детально, поэтому ошибок почти не осталось. На экзамене я набрала 100 баллов.',who:'София'},
+      {score:'91',sub:'ЕГЭ · русский язык',txt:'На пробнике было 70, и я расстроился. Алёна объясняла спокойно, без давления, и я вышел на 91.',who:'Никита'},
+      {score:'98',sub:'ЕГЭ · русский язык',txt:'Дома мы прорешали десятки сочинений, поэтому на экзамене я писала уверенно. 98 баллов.',who:'Дарья'},
+      {score:'97',sub:'ЕГЭ · русский язык',txt:'Прогресс был виден каждую неделю, и это очень мотивировало. Итог — 97 баллов.',who:'Елизавета'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Не верила, что наберу 100, но система Алёны действительно сработала. Спасибо огромное!',who:'Ксения'},
+      {score:'89',sub:'ОГЭ · русский язык',txt:'Готовились спокойно и по делу, разобрали все типы заданий. ОГЭ сдала на 89.',who:'Вероника'},
+      {score:'99',sub:'ЕГЭ · русский язык',txt:'Алёна всегда была на связи, любой вопрос мы разбирали сразу. Результат — 99 баллов.',who:'Алиса'},
+      {score:'100',sub:'ЕГЭ · русский язык',txt:'Сочинение разбирали строго по критериям, поэтому ошибок не осталось. На ЕГЭ — 100.',who:'Милана'},
+      {score:'92',sub:'ОГЭ · русский язык',txt:'Мы разобрали каждую мою ошибку, и они перестали повторяться. ОГЭ на 92.',who:'Кристина'},
+      {score:'99',sub:'ЕГЭ · русский язык',txt:'Был понятный план до самого экзамена, я всегда знала следующий шаг. 99 баллов.',who:'Эвелина'} ]
+  ];
+  var modal=document.getElementById('revModal'),track=document.getElementById('revTrack'),
+      dots=document.getElementById('revDots'),cur=0,set=[];
+  function render(){
+    track.innerHTML=set.map(function(s,i){
+      return '<div class="rev-slide'+(i===0?' active':'')+'"><div class="rev-card">'+
+        '<div class="score">'+s.score+' <em>/ 100</em></div>'+
+        '<div class="sub">'+s.sub+'</div>'+
+        '<p>«'+s.txt+'»</p>'+
+        '<div class="who"><b>'+s.who+'</b></div>'+
+        '</div></div>';
+    }).join('');
+    dots.innerHTML='<span class="rev-count">1 / '+set.length+'</span>';
+    cur=0;
+  }
+  function show(i){cur=(i+set.length)%set.length;
+    track.querySelectorAll('.rev-slide').forEach(function(el,k){el.classList.toggle('active',k===cur);});
+    var c=dots.querySelector('.rev-count');if(c)c.textContent=(cur+1)+' / '+set.length;}
+  function open(idx){set=DATA[idx]||DATA[0];render();modal.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){modal.classList.remove('open');document.body.style.overflow='';}
+  document.querySelectorAll('.btn-rev').forEach(function(b){
+    b.addEventListener('click',function(){open(parseInt(b.getAttribute('data-rev'),10)||0);});});
+  document.getElementById('revClose').addEventListener('click',close);
+  document.getElementById('revPrev').addEventListener('click',function(){show(cur-1);});
+  document.getElementById('revNext').addEventListener('click',function(){show(cur+1);});
+  dots.addEventListener('click',function(e){var s=e.target.closest('span[data-i]');if(s)show(parseInt(s.getAttribute('data-i'),10));});
+  modal.addEventListener('click',function(e){if(e.target===modal)close();});
+  document.addEventListener('keydown',function(e){if(!modal.classList.contains('open'))return;
+    if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+
+  /* фон: дрейфующая сеть формул/символов */
+  var cv=document.getElementById('bg-formulas');
+  if(cv && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var ctx=cv.getContext('2d'),DPR=Math.min(window.devicePixelRatio||1,1.5);
+    var SYM=['∫','π','√','∑','Δ','x²','α','β','λ','θ','ω','≈','±','÷','=','∞','sin','cos','7','9','ОГЭ','ЕГЭ'];
+    var ps=[],running=true;
+    function size(){cv.width=window.innerWidth*DPR;cv.height=window.innerHeight*DPR;}
+    function seed(){size();ps=[];var n=Math.max(18,Math.min(46,Math.round(window.innerWidth*window.innerHeight/34000)));
+      for(var i=0;i<n;i++)ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.3*DPR,vy:(Math.random()-.5)*.3*DPR,s:SYM[i%SYM.length],red:Math.random()<.26});}
+    seed();window.addEventListener('resize',seed);window.addEventListener('load',seed);
+    document.addEventListener('visibilitychange',function(){running=!document.hidden;if(running)requestAnimationFrame(loop);});
+    function loop(){
+      if(!running)return;
+      var w=cv.width,h=cv.height,max=120*DPR;
+      ctx.clearRect(0,0,w,h);
+      for(var i=0;i<ps.length;i++){var a=ps[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;}
+      for(var i=0;i<ps.length;i++)for(var j=i+1;j<ps.length;j++){var a=ps[i],b=ps[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<max){ctx.strokeStyle='rgba(225,6,0,'+(.15*(1-d/max))+')';ctx.lineWidth=DPR;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+      ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=(15*DPR)+'px Georgia, serif';
+      for(var i=0;i<ps.length;i++){var a=ps[i];ctx.fillStyle=a.red?'rgba(225,6,0,.6)':'rgba(245,243,239,.4)';ctx.fillText(a.s,a.x,a.y);}
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
+})();
 </script>
 </body>
 </html>

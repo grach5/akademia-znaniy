@@ -415,6 +415,8 @@
   .rev-card p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.5;position:relative;z-index:1}
   .rev-card .who{margin-top:16px;font-size:13px;color:var(--grey)}
   .rev-card .who b{color:var(--white);font-weight:500}
+  .rev-shot img{width:100%;display:block;border-radius:14px;border:1px solid var(--line)}
+  .rev-empty{background:var(--black-2);border:1px solid var(--line);border-radius:14px;padding:40px 28px;text-align:center;color:var(--grey);font-size:15px}
   .rev-card .shot-hint{margin-top:14px;font-size:11.5px;color:var(--red)}
   .rev-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
   .rev-arrow{background:none;border:1px solid var(--line);color:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;transition:border-color .3s,background .3s}
@@ -479,7 +481,7 @@
       </div>
 
       <div class="founder-name2">
-        <div class="nm">Фамилия Имя Отчество</div>
+        <div class="nm">Дубровский Владислав Эдуардович</div>
         <div class="role">Основатель репетиторского центра · преподаватель математики</div>
 
         <div class="reveal-block" data-reveal>
@@ -503,6 +505,7 @@
 
         <div class="hero-cta founder-actions">
           <a href="#contact" class="btn solid">Записаться на&nbsp;занятие</a>
+          <button class="btn" type="button" data-shots="math">Отзывы учеников</button>
           <a href="#teachers" class="btn">Преподаватели</a>
         </div>
       </div>
@@ -561,7 +564,7 @@
           </div>
           <div class="t-meta">
             <div class="subj">Русский язык</div>
-            <h3>Алёна</h3>
+            <h3>Сидорова<br>Алёна Вячеславовна</h3>
             <span class="t-exp">Опыт на&nbsp;практике <b>более 3 лет</b></span>
           </div>
         </div>
@@ -825,12 +828,12 @@
       dots=document.getElementById('revDots'),cur=0,set=[];
   function render(){
     track.innerHTML=set.map(function(s,i){
-      return '<div class="rev-slide'+(i===0?' active':'')+'"><div class="rev-card">'+
-        '<div class="score">'+s.score+' <em>/ 100</em></div>'+
-        '<div class="sub">'+s.sub+'</div>'+
-        '<p>«'+s.txt+'»</p>'+
-        '<div class="who"><b>'+s.who+'</b></div>'+
-        '</div></div>';
+      var inner = s.empty
+        ? '<div class="rev-empty">Скриншоты отзывов скоро появятся.</div>'
+        : s.img
+          ? '<div class="rev-shot"><img src="'+s.img+'" alt="Скриншот отзыва ученика"></div>'
+          : '<div class="rev-card"><div class="score">'+s.score+' <em>/ 100</em></div><div class="sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';
+      return '<div class="rev-slide'+(i===0?' active':'')+'">'+inner+'</div>';
     }).join('');
     dots.innerHTML='<span class="rev-count">1 / '+set.length+'</span>';
     cur=0;
@@ -839,9 +842,20 @@
     track.querySelectorAll('.rev-slide').forEach(function(el,k){el.classList.toggle('active',k===cur);});
     var c=dots.querySelector('.rev-count');if(c)c.textContent=(cur+1)+' / '+set.length;}
   function open(idx){set=DATA[idx]||DATA[0];render();modal.classList.add('open');document.body.style.overflow='hidden';}
+  var SHOTS={
+    math:['reviews/math-1.jpg','reviews/math-2.jpg','reviews/math-3.jpg','reviews/math-4.jpg','reviews/math-5.jpg'],
+    russian:[],
+    physics:[]
+  };
+  function openShots(key){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.btn-rev').forEach(function(b){
-    b.addEventListener('click',function(){open(parseInt(b.getAttribute('data-rev'),10)||0);});});
+    b.addEventListener('click',function(){
+      var sh=b.getAttribute('data-shots');
+      if(sh) openShots(sh); else open(parseInt(b.getAttribute('data-rev'),10)||0);
+    });});
+  document.querySelectorAll('.btn[data-shots]').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();openShots(b.getAttribute('data-shots'));});});
   document.getElementById('revClose').addEventListener('click',close);
   document.getElementById('revPrev').addEventListener('click',function(){show(cur-1);});
   document.getElementById('revNext').addEventListener('click',function(){show(cur+1);});
@@ -853,7 +867,7 @@
   /* инлайн-карусель отзывов (стрелки ←/→) */
   var row=document.getElementById('revRow');
   if(row){
-    row.innerHTML=DATA[0].map(function(s){return '<div class="r-card"><div class="r-score">'+s.score+' <em>/ 100</em></div><div class="r-sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';}).join('');
+    row.innerHTML=DATA[0].slice(0,8).map(function(s){return '<div class="r-card"><div class="r-score">'+s.score+' <em>/ 100</em></div><div class="r-sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';}).join('');
     var idx=0;
     function unit(){var c=row.querySelector('.r-card');return c?c.getBoundingClientRect().width+26:320;}
     function maxIdx(){var vp=row.parentElement.clientWidth;var per=Math.max(1,Math.round(vp/unit()));return Math.max(0,row.children.length-per);}

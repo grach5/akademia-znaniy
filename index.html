@@ -433,10 +433,33 @@
     .excl{width:46px;height:46px;font-size:26px;right:-6px}
   }
 
+  /* ===== SCROLL PROGRESS ===== */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:2000;transition:width .1s linear}
+
+  /* ===== STATS STRIP ===== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .stat{background:var(--black);padding:34px 22px;text-align:center}
+  .stat .num{font-family:var(--serif);font-size:clamp(36px,4.4vw,56px);font-weight:500;color:var(--red);line-height:1}
+  .stat .num em{font-style:normal;font-size:.5em;color:var(--white)}
+  .stat .lab{font-size:12.5px;letter-spacing:.06em;color:var(--grey);margin-top:12px;text-transform:uppercase}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* ===== STEPS (как проходит подготовка) ===== */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .step{position:relative;background:var(--black-2);border:1px solid var(--line);border-radius:14px;padding:34px 28px 30px;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s;overflow:hidden}
+  .step:hover{transform:translateY(-8px);border-color:rgba(225,6,0,.5)}
+  .step .n{font-family:var(--serif);font-size:64px;font-weight:500;line-height:.8;color:rgba(225,6,0,.22);position:absolute;right:18px;top:14px}
+  .step h3{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.1;margin-bottom:12px;position:relative;z-index:1}
+  .step p{font-size:14.5px;line-height:1.6;color:var(--grey);position:relative;z-index:1}
+  .step .bar{height:2px;width:34px;background:var(--red);margin-bottom:20px}
+  @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.steps{grid-template-columns:1fr}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
 <canvas id="bg-formulas" aria-hidden="true"></canvas>
 <p class="sr-only">Академия Знаний — репетиторский центр подготовки к ОГЭ и ЕГЭ с гарантией системного результата. Офлайн и онлайн.</p>
 
@@ -446,6 +469,7 @@
     <a class="brand" href="#top">Академия <b>Знаний</b></a>
     <nav class="nav-links" aria-label="Основная навигация">
       <a href="#top">О центре</a>
+      <a href="#process">Этапы</a>
       <a href="#teachers">Преподаватели</a>
       <a href="#reviews">Отзывы</a>
       <a href="#course">Курс</a>
@@ -510,6 +534,54 @@
           <a href="#teachers" class="btn">Преподаватели</a>
         </div>
       </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section id="stats" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats ro">
+      <div class="stat"><div class="num" data-count="10"><span class="cv">0</span><em>+</em></div><div class="lab">лет опыта подготовки</div></div>
+      <div class="stat"><div class="num" data-count="3"><span class="cv">0</span></div><div class="lab">предмета: матем., физика, рус.</div></div>
+      <div class="stat"><div class="num" data-count="2"><span class="cv">0</span></div><div class="lab">формата: offline / online</div></div>
+      <div class="stat"><div class="num" data-count="100"><em>до </em><span class="cv">0</span></div><div class="lab">баллов — реальная цель</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАК ПРОХОДИТ ПОДГОТОВКА ============ -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head ro">
+      <div class="eyebrow">Как проходит подготовка</div>
+      <h2>Система, а&nbsp;не <em>репетиторство наугад</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step ro">
+        <span class="n">01</span>
+        <div class="bar"></div>
+        <h3>Диагностика</h3>
+        <p>Определяем пробелы и&nbsp;цель по&nbsp;баллам&nbsp;— от&nbsp;этого строится вся подготовка.</p>
+      </div>
+      <div class="step ro d1">
+        <span class="n">02</span>
+        <div class="bar"></div>
+        <h3>Стратегия</h3>
+        <p>Составляем индивидуальный план под&nbsp;конкретный экзамен и&nbsp;сроки.</p>
+      </div>
+      <div class="step ro d2">
+        <span class="n">03</span>
+        <div class="bar"></div>
+        <h3>Системные занятия</h3>
+        <p>Точечно закрываем темы и&nbsp;отрабатываем реальные задания формата ОГЭ&nbsp;/&nbsp;ЕГЭ.</p>
+      </div>
+      <div class="step ro d3">
+        <span class="n">04</span>
+        <div class="bar"></div>
+        <h3>Результат</h3>
+        <p>Доводим до&nbsp;уверенного балла на&nbsp;экзамене с&nbsp;контролем прогресса.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -681,9 +753,12 @@
 </div>
 
 <script>
-  // header background on scroll
-  var head=document.getElementById('head');
-  var onScroll=function(){head.classList.toggle('scrolled',window.scrollY>40)};
+  // header background + scroll progress
+  var head=document.getElementById('head'), prog=document.getElementById('progress');
+  var onScroll=function(){
+    head.classList.toggle('scrolled',window.scrollY>40);
+    if(prog){var de=document.documentElement;var h=de.scrollHeight-de.clientHeight;prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';}
+  };
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
   // reveal on scroll
@@ -691,6 +766,17 @@
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
   },{threshold:.16,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.ro').forEach(function(el){io.observe(el)});
+
+  // count-up для статистики
+  var cio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return; cio.unobserve(e.target);
+      var el=e.target, target=parseInt(el.getAttribute('data-count'),10)||0, cv=el.querySelector('.cv'), t0=null, dur=1400;
+      function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var val=Math.round((1-Math.pow(1-p,3))*target);if(cv)cv.textContent=val;if(p<1)requestAnimationFrame(tick);}
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.stat .num[data-count]').forEach(function(el){cio.observe(el);});
 
   // expandable blocks
   document.querySelectorAll('[data-reveal]').forEach(function(block){

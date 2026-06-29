@@ -549,7 +549,7 @@
           <div class="t-price"><span>Стоимость занятий</span><b><em>от</em>&nbsp;3&nbsp;500&nbsp;₽</b></div>
           <div class="fmt"><span><i aria-hidden="true"></i>Офлайн</span><span><i aria-hidden="true"></i>Онлайн</span></div>
         </div>
-        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-rev="1" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
+        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-shots="physics" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
       </article>
 
       <!-- Алёна -->
@@ -578,7 +578,7 @@
           <div class="t-price"><span>Стоимость занятий</span><b><em>от</em>&nbsp;3&nbsp;000&nbsp;₽</b></div>
           <div class="fmt"><span><i aria-hidden="true"></i>Офлайн</span><span><i aria-hidden="true"></i>Онлайн</span></div>
         </div>
-        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-rev="2" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
+        <div class="t-revrow" style="padding:0 30px 26px"><button class="btn-rev" data-shots="russian" type="button"><i aria-hidden="true"></i>Отзывы</button></div>
       </article>
     </div>
   </div>
@@ -826,27 +826,26 @@
   ];
   var modal=document.getElementById('revModal'),track=document.getElementById('revTrack'),
       dots=document.getElementById('revDots'),cur=0,set=[];
+  function loadSlide(i){var sl=track.querySelectorAll('.rev-slide')[i];if(!sl)return;var im=sl.querySelector('img[data-src]');if(im){im.src=im.getAttribute('data-src');im.removeAttribute('data-src');}}
   function render(){
     track.innerHTML=set.map(function(s,i){
       var inner = s.empty
         ? '<div class="rev-empty">Скриншоты отзывов скоро появятся.</div>'
         : s.img
-          ? '<div class="rev-shot"><img src="'+s.img+'" alt="Скриншот отзыва ученика"></div>'
+          ? '<div class="rev-shot"><img data-src="'+s.img+'" alt="Скриншот отзыва ученика"></div>'
           : '<div class="rev-card"><div class="score">'+s.score+' <em>/ 100</em></div><div class="sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';
       return '<div class="rev-slide'+(i===0?' active':'')+'">'+inner+'</div>';
     }).join('');
     dots.innerHTML='<span class="rev-count">1 / '+set.length+'</span>';
-    cur=0;
+    cur=0;loadSlide(0);loadSlide(1);
   }
   function show(i){cur=(i+set.length)%set.length;
     track.querySelectorAll('.rev-slide').forEach(function(el,k){el.classList.toggle('active',k===cur);});
+    loadSlide(cur);loadSlide((cur+1)%set.length);loadSlide((cur-1+set.length)%set.length);
     var c=dots.querySelector('.rev-count');if(c)c.textContent=(cur+1)+' / '+set.length;}
   function open(idx){set=DATA[idx]||DATA[0];render();modal.classList.add('open');document.body.style.overflow='hidden';}
-  var SHOTS={
-    math:['reviews/math-1.jpg','reviews/math-2.jpg','reviews/math-3.jpg','reviews/math-4.jpg','reviews/math-5.jpg'],
-    russian:[],
-    physics:[]
-  };
+  function shotList(subj,n){var a=[];for(var i=1;i<=n;i++)a.push('reviews/'+subj+'/'+i+'.jpg');return a;}
+  var SHOTS={ math:shotList('math',21), russian:shotList('russian',16), physics:shotList('physics',1) };
   function openShots(key){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.btn-rev').forEach(function(b){

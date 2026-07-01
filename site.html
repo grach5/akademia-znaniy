@@ -471,17 +471,21 @@
   .tier:hover{transform:translateY(-8px)}
   .tier.rec{border-color:rgba(225,6,0,.55)}
   .tier.prem{border-color:var(--red);background:radial-gradient(120% 100% at 50% 0%,rgba(225,6,0,.12),var(--black-2) 60%)}
-  .tier .medal{font-size:26px;line-height:1}
-  .tier .tname{font-family:var(--serif);font-size:24px;font-weight:500;margin:12px 0 4px}
-  .tier .tprice{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--red);line-height:1;margin:10px 0 22px}
-  .tier .tprice em{font-style:normal;font-size:.5em;color:var(--grey)}
-  .tier .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:30px;white-space:nowrap}
-  .tier ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:12px}
+  .tier .medal{width:52px;height:52px;border-radius:50%;background:rgba(225,6,0,.1);border:1px solid rgba(225,6,0,.3);display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1}
+  .tier .tname{font-family:var(--serif);font-size:25px;font-weight:500;margin:18px 0 6px}
+  .tier .tdesc{font-size:13.5px;line-height:1.45;color:var(--grey);min-height:38px}
+  .tier .tprice{font-family:var(--serif);font-size:42px;font-weight:500;color:var(--white);line-height:1;margin:18px 0 4px}
+  .tier .tprice em{font-style:normal;font-size:.42em;color:var(--grey)}
+  .tier.rec .tprice,.tier.prem .tprice{color:var(--red)}
+  .tier .tnote{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:24px}
+  .tier .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:30px;white-space:nowrap;box-shadow:0 8px 22px rgba(225,6,0,.4)}
+  .tier ul{list-style:none;margin:0 0 30px;padding:24px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:13px}
   .tier li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:var(--white)}
   .tier li .ck{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(225,6,0,.16);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:2px}
-  .tier .limit{font-size:12.5px;letter-spacing:.04em;color:var(--red);margin:-10px 0 20px;display:flex;align-items:center;gap:8px}
+  .tier .limit{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--red);margin:0 0 22px;display:flex;align-items:center;gap:9px;font-weight:500}
   .tier .limit::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(225,6,0,.18)}
-  .tier .btn{margin-top:auto;width:100%;justify-content:center}
+  .tier .btn{margin-top:auto;width:100%;justify-content:center;border-radius:10px;padding:15px 20px;font-size:14px;letter-spacing:.04em}
+  .tier.prem .btn{box-shadow:0 14px 34px rgba(225,6,0,.35)}
   @media(max-width:900px){.tiers{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}}
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
@@ -772,7 +776,9 @@
         <div class="tier ro">
           <span class="medal" aria-hidden="true">🥉</span>
           <div class="tname">Базовый</div>
+          <div class="tdesc">Для тех, кто готов заниматься самостоятельно.</div>
           <div class="tprice">25&nbsp;000&nbsp;<em>₽</em></div>
+          <div class="tnote">единоразово · за весь курс</div>
           <ul>
             <li><span class="ck">✓</span>Короткие видео-разборы всех заданий (2–3&nbsp;минуты)</li>
             <li><span class="ck">✓</span>Практические задания после каждой темы</li>
@@ -786,7 +792,9 @@
           <span class="badge">Рекомендуем</span>
           <span class="medal" aria-hidden="true">🥈</span>
           <div class="tname">С сопровождением</div>
+          <div class="tdesc">Практика с&nbsp;проверкой работ и&nbsp;контролем преподавателя.</div>
           <div class="tprice">45&nbsp;000&nbsp;<em>₽</em></div>
+          <div class="tnote">единоразово · за весь курс</div>
           <ul>
             <li><span class="ck">✓</span>Всё из&nbsp;базового курса</li>
             <li><span class="ck">✓</span>Проверка домашних заданий</li>
@@ -800,7 +808,9 @@
         <div class="tier prem ro d2">
           <span class="medal" aria-hidden="true">🥇</span>
           <div class="tname">Премиум</div>
+          <div class="tdesc">Максимум внимания, глубины и&nbsp;личной работы.</div>
           <div class="tprice">75&nbsp;000&nbsp;<em>₽</em></div>
+          <div class="tnote">единоразово · за весь курс</div>
           <div class="limit">Количество мест ограничено</div>
           <ul>
             <li><span class="ck">✓</span>Всё из&nbsp;курса с&nbsp;сопровождением</li>

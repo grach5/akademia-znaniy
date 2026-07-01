@@ -465,6 +465,25 @@
   .why-item .ck{flex:none;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px}
   @media(max-width:760px){.why-grid{grid-template-columns:1fr}.why-course{padding:34px 24px}}
 
+  /* ===== ТАРИФЫ КУРСА ===== */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;align-items:stretch}
+  .tier{position:relative;display:flex;flex-direction:column;background:var(--black-2);border:1px solid var(--line);border-radius:16px;padding:34px 28px;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s}
+  .tier:hover{transform:translateY(-8px)}
+  .tier.rec{border-color:rgba(225,6,0,.55)}
+  .tier.prem{border-color:var(--red);background:radial-gradient(120% 100% at 50% 0%,rgba(225,6,0,.12),var(--black-2) 60%)}
+  .tier .medal{font-size:26px;line-height:1}
+  .tier .tname{font-family:var(--serif);font-size:24px;font-weight:500;margin:12px 0 4px}
+  .tier .tprice{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--red);line-height:1;margin:10px 0 22px}
+  .tier .tprice em{font-style:normal;font-size:.5em;color:var(--grey)}
+  .tier .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:30px;white-space:nowrap}
+  .tier ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:12px}
+  .tier li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:var(--white)}
+  .tier li .ck{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(225,6,0,.16);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:2px}
+  .tier .limit{font-size:12.5px;letter-spacing:.04em;color:var(--red);margin:-10px 0 20px;display:flex;align-items:center;gap:8px}
+  .tier .limit::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(225,6,0,.18)}
+  .tier .btn{margin-top:auto;width:100%;justify-content:center}
+  @media(max-width:900px){.tiers{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
 </style>
 </head>
@@ -703,15 +722,9 @@
         <div class="course-copy">
           <div class="eyebrow">Новый формат</div>
           <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ по&nbsp;математике</em></h3>
-          <p class="desc">Системная программа с&nbsp;видеоразборами: занимаетесь в&nbsp;удобное время, а&nbsp;преподаватель проверяет работы и&nbsp;ведёт вас до&nbsp;результата.</p>
+          <p class="desc">Системная программа с&nbsp;видеоразборами: занимаетесь в&nbsp;удобное время, а&nbsp;преподаватель проверяет работы и&nbsp;ведёт вас до&nbsp;результата. Три формата&nbsp;— выберите под&nbsp;свои цели.</p>
 
-          <div class="warm-note">Стартовая цена&nbsp;— для&nbsp;прогрева, действует на&nbsp;первый поток</div>
-          <div class="price-row">
-            <span class="price-old">19&nbsp;900&nbsp;₽</span>
-            <span class="price-new"><em>от</em>&nbsp;9&nbsp;900&nbsp;₽</span>
-          </div>
-
-          <div class="reveal-block" data-reveal style="border-top-color:rgba(225,6,0,.3)">
+          <div class="reveal-block" data-reveal style="border-top:1px solid var(--line)">
             <button class="reveal-trigger" aria-expanded="false">Подробнее о&nbsp;курсе <span class="ic" aria-hidden="true"></span></button>
             <div class="reveal-body"><div class="reveal-inner">
               Формат системной подготовки для&nbsp;тех, кто нацелен на&nbsp;результат и&nbsp;готов работать самостоятельно.<br><br>
@@ -751,10 +764,55 @@
             </div></div>
           </div>
 
-          <div style="margin-top:30px"><a href="#contact" class="btn solid">Записаться на&nbsp;курс</a></div>
         </div>
       </div>
     </div>
+
+    <div class="tiers">
+        <div class="tier ro">
+          <span class="medal" aria-hidden="true">🥉</span>
+          <div class="tname">Базовый</div>
+          <div class="tprice">25&nbsp;000&nbsp;<em>₽</em></div>
+          <ul>
+            <li><span class="ck">✓</span>Короткие видео-разборы всех заданий (2–3&nbsp;минуты)</li>
+            <li><span class="ck">✓</span>Практические задания после каждой темы</li>
+            <li><span class="ck">✓</span>Полная программа подготовки к&nbsp;ОГЭ</li>
+            <li><span class="ck">✓</span>Самостоятельный формат без проверки</li>
+          </ul>
+          <a href="#contact" class="btn">Выбрать</a>
+        </div>
+
+        <div class="tier rec ro d1">
+          <span class="badge">Рекомендуем</span>
+          <span class="medal" aria-hidden="true">🥈</span>
+          <div class="tname">С сопровождением</div>
+          <div class="tprice">45&nbsp;000&nbsp;<em>₽</em></div>
+          <ul>
+            <li><span class="ck">✓</span>Всё из&nbsp;базового курса</li>
+            <li><span class="ck">✓</span>Проверка домашних заданий</li>
+            <li><span class="ck">✓</span>Обратная связь по&nbsp;каждому ученику</li>
+            <li><span class="ck">✓</span>Разбор ошибок и&nbsp;рекомендации</li>
+            <li><span class="ck">✓</span>Контроль прогресса на&nbsp;протяжении всей подготовки</li>
+          </ul>
+          <a href="#contact" class="btn solid">Выбрать</a>
+        </div>
+
+        <div class="tier prem ro d2">
+          <span class="medal" aria-hidden="true">🥇</span>
+          <div class="tname">Премиум</div>
+          <div class="tprice">75&nbsp;000&nbsp;<em>₽</em></div>
+          <div class="limit">Количество мест ограничено</div>
+          <ul>
+            <li><span class="ck">✓</span>Всё из&nbsp;курса с&nbsp;сопровождением</li>
+            <li><span class="ck">✓</span>Приоритетная и&nbsp;более частая обратная связь</li>
+            <li><span class="ck">✓</span>Подробный разбор сложных тем и&nbsp;ошибок</li>
+            <li><span class="ck">✓</span>Постоянная связь с&nbsp;преподавателем</li>
+            <li><span class="ck">✓</span>Формат мини-группы&nbsp;/ закрытые разборы</li>
+            <li><span class="ck">✓</span>Дополнительные занятия и&nbsp;прямые эфиры</li>
+          </ul>
+          <a href="#contact" class="btn solid">Выбрать</a>
+        </div>
+      </div>
 
     <div class="why-course ro">
       <div class="eyebrow">Почему курс</div>

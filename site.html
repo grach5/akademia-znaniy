@@ -455,6 +455,16 @@
   @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:480px){.steps{grid-template-columns:1fr}}
 
+  /* ===== ПОЧЕМУ КУРС (акцент) ===== */
+  .why-course{margin-top:34px;background:var(--black-2);border:1px solid rgba(225,6,0,.32);border-radius:16px;padding:46px 42px;position:relative;overflow:hidden}
+  .why-course::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:1px solid rgba(225,6,0,.14);border-radius:50%}
+  .why-course h3{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,42px);line-height:1.05;margin:14px 0 30px;position:relative;z-index:1}
+  .why-course h3 em{color:var(--red);font-style:italic}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 44px;position:relative;z-index:1}
+  .why-item{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;line-height:1.55;color:var(--white)}
+  .why-item .ck{flex:none;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px}
+  @media(max-width:760px){.why-grid{grid-template-columns:1fr}.why-course{padding:34px 24px}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ro{opacity:1;transform:none}}
 </style>
 </head>
@@ -692,8 +702,8 @@
         </div>
         <div class="course-copy">
           <div class="eyebrow">Новый формат</div>
-          <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ</em></h3>
-          <p class="desc">Отдельная программа подготовки к&nbsp;экзаменам. Минимум текста&nbsp;— вся суть внутри. Нажмите «подробнее», чтобы открыть детали.</p>
+          <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ по&nbsp;математике</em></h3>
+          <p class="desc">Системная программа с&nbsp;видеоразборами: занимаетесь в&nbsp;удобное время, а&nbsp;преподаватель проверяет работы и&nbsp;ведёт вас до&nbsp;результата.</p>
 
           <div class="warm-note">Стартовая цена&nbsp;— для&nbsp;прогрева, действует на&nbsp;первый поток</div>
           <div class="price-row">
@@ -704,13 +714,58 @@
           <div class="reveal-block" data-reveal style="border-top-color:rgba(225,6,0,.3)">
             <button class="reveal-trigger" aria-expanded="false">Подробнее о&nbsp;курсе <span class="ic" aria-hidden="true"></span></button>
             <div class="reveal-body"><div class="reveal-inner">
-              <span class="ph">Описание курса — заказчик пришлёт</span><br>
-              Здесь раскрывается программа курса, формат, длительность и&nbsp;что входит в&nbsp;стоимость. По&nbsp;аналогии с&nbsp;остальными блоками&nbsp;— текст спрятан под&nbsp;кнопку, чтобы на&nbsp;экране было чисто.
+              Формат системной подготовки для&nbsp;тех, кто нацелен на&nbsp;результат и&nbsp;готов работать самостоятельно.<br><br>
+              Это не&nbsp;просто набор занятий&nbsp;— это выстроенная программа, которая шаг за&nbsp;шагом приводит ученика к&nbsp;уверенному результату на&nbsp;экзамене. Основа курса&nbsp;— понимание, а&nbsp;не&nbsp;заучивание.<br><br>
+              Каждое задание разбирается в&nbsp;формате коротких видео: без лишней теории, только чёткое объяснение логики решения и&nbsp;принципа выполнения. Ученик изучает материал в&nbsp;удобное время, отрабатывает задания и&nbsp;закрепляет навык через практикум.
+            </div></div>
+          </div>
+
+          <div class="reveal-block" data-reveal>
+            <button class="reveal-trigger" aria-expanded="false">Как проходит подготовка <span class="ic" aria-hidden="true"></span></button>
+            <div class="reveal-body"><div class="reveal-inner">
+              — структурированные видеоразборы по&nbsp;каждому типу заданий<br>
+              — практические задания в&nbsp;формате ОГЭ<br>
+              — регулярная самостоятельная отработка<br>
+              — отправка фотоотчётов по&nbsp;выполненной работе<br>
+              — фиксация прогресса и&nbsp;контроль результатов<br><br>
+              Проверяю выполненные задания, даю обратную связь и&nbsp;при&nbsp;необходимости повторно объясняю материал до&nbsp;полного понимания.<br><br>
+              Связь с&nbsp;преподавателем&nbsp;— ежедневно. Любой вопрос разбирается до&nbsp;результата.
+            </div></div>
+          </div>
+
+          <div class="reveal-block" data-reveal>
+            <button class="reveal-trigger" aria-expanded="false">Преимущества формата <span class="ic" aria-hidden="true"></span></button>
+            <div class="reveal-body"><div class="reveal-inner">
+              — заниматься в&nbsp;удобное время без привязки к&nbsp;расписанию<br>
+              — подходит при плотном графике (спорт, поездки, пропуски)<br>
+              — сохранение качества подготовки без потери темпа<br>
+              — развитие самостоятельности и&nbsp;ответственности за&nbsp;результат<br><br>
+              Формат особенно эффективен для&nbsp;учеников с&nbsp;внутренней мотивацией, которые действительно хотят сдать экзамен на&nbsp;высокий балл.
+            </div></div>
+          </div>
+
+          <div class="reveal-block" data-reveal>
+            <button class="reveal-trigger" aria-expanded="false">Результаты <span class="ic" aria-hidden="true"></span></button>
+            <div class="reveal-body"><div class="reveal-inner">
+              Ученики, проходящие курс, стабильно показывают высокий результат на&nbsp;экзамене&nbsp;— включая оценки 4 и&nbsp;5 даже при&nbsp;изначально слабом уровне.
             </div></div>
           </div>
 
           <div style="margin-top:30px"><a href="#contact" class="btn solid">Записаться на&nbsp;курс</a></div>
         </div>
+      </div>
+    </div>
+
+    <div class="why-course ro">
+      <div class="eyebrow">Почему курс</div>
+      <h3>Почему курс выбирают <em>вместо индивидуальных занятий</em></h3>
+      <div class="why-grid">
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Экономия до&nbsp;2–3&nbsp;раз по&nbsp;сравнению с&nbsp;индивидуальной подготовкой</span></div>
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Те&nbsp;же объяснения, что и&nbsp;на&nbsp;занятиях с&nbsp;преподавателем&nbsp;— структурированные и&nbsp;выверенные</span></div>
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Можно пересматривать сложные темы столько раз, сколько нужно</span></div>
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Подготовка в&nbsp;удобное время, без жёсткой привязки к&nbsp;расписанию</span></div>
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Сразу практика после каждого объяснения&nbsp;— формируется навык, а&nbsp;не&nbsp;просто знание</span></div>
+        <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Нет «потерянных уроков»&nbsp;— весь материал всегда под&nbsp;рукой</span></div>
       </div>
     </div>
   </div>

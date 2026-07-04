@@ -531,8 +531,7 @@
           <div class="seal" role="img" aria-label="Гарантия системного результата"><span>Гарантия</span><span class="seal-big" aria-hidden="true">✓</span><span>результата</span></div>
           <button class="excl" data-opens="founder-text1" aria-label="Подробнее — текст 1">!</button>
           <figure class="photo hero-photo">
-            <!-- Замените на фото основателя: <img src="founder.jpg" alt="Основатель репетиторского центра «Академия Знаний»"> -->
-            <div class="ph-hint"><i aria-hidden="true">◳</i>Моё фото<br><small style="opacity:.6">вставьте изображение сюда</small></div>
+            <img src="img/founder.jpg" alt="Дубровский Владислав Эдуардович — основатель репетиторского центра «Академия Знаний»">
           </figure>
         </div>
       </div>
@@ -718,14 +717,13 @@
         <div class="cutout" style="display:block">
           <div class="plate course-plate"></div>
           <figure class="photo course-photo">
-            <!-- <img src="course.jpg" alt="Курс по подготовке к ОГЭ"> -->
-            <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя<br><small style="opacity:.6">для блока курса</small></div>
+            <img src="img/studio.jpg" alt="Занятие в студии «Академия Знаний» — подготовка к ОГЭ по математике">
           </figure>
         </div>
         <div class="course-copy">
           <div class="eyebrow">Новый формат</div>
           <h3>Курс по&nbsp;подготовке к&nbsp;<em>ОГЭ по&nbsp;математике</em></h3>
-          <p class="desc">Системная программа с&nbsp;видеоразборами: занимаетесь в&nbsp;удобное время, а&nbsp;преподаватель проверяет работы и&nbsp;ведёт вас до&nbsp;результата. Три формата&nbsp;— выберите под&nbsp;свои цели.</p>
+          <p class="desc">Премиальная система подготовки к&nbsp;ОГЭ по&nbsp;математике с&nbsp;фокусом на&nbsp;высокий балл: чёткая структура, глубокое понимание заданий и&nbsp;персональная обратная связь от&nbsp;преподавателя. Контроль прогресса и&nbsp;доведение до&nbsp;результата. Выберите формат&nbsp;— от&nbsp;самостоятельной подготовки до&nbsp;полного сопровождения.</p>
 
           <div class="reveal-block" data-reveal style="border-top:1px solid var(--line)">
             <button class="reveal-trigger" aria-expanded="false">Подробнее о&nbsp;курсе <span class="ic" aria-hidden="true"></span></button>
@@ -833,6 +831,19 @@
         <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Подготовка в&nbsp;удобное время, без жёсткой привязки к&nbsp;расписанию</span></div>
         <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Сразу практика после каждого объяснения&nbsp;— формируется навык, а&nbsp;не&nbsp;просто знание</span></div>
         <div class="why-item"><span class="ck" aria-hidden="true">✓</span><span>Нет «потерянных уроков»&nbsp;— весь материал всегда под&nbsp;рукой</span></div>
+      </div>
+    </div>
+    <div class="course-reviews ro">
+      <div class="sec-head" style="margin-bottom:34px">
+        <div class="eyebrow">Отзывы о курсе</div>
+        <h2>Что говорят <em>ученики курса</em></h2>
+      </div>
+      <div class="rev-carousel">
+        <div class="rev-viewport"><div class="rev-row" id="courseRow"></div></div>
+        <div class="rev-rowctrl">
+          <button class="rev-arrow" id="coursePrev" type="button" aria-label="Предыдущий">‹</button>
+          <button class="rev-arrow" id="courseNext" type="button" aria-label="Следующий">›</button>
+        </div>
       </div>
     </div>
   </div>
@@ -989,7 +1000,7 @@
     var c=dots.querySelector('.rev-count');if(c)c.textContent=(cur+1)+' / '+set.length;}
   function open(idx){set=DATA[idx]||DATA[0];render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function shotList(subj,n){var a=[];for(var i=1;i<=n;i++)a.push('reviews/'+subj+'/'+i+'.jpg');return a;}
-  var SHOTS={ math:shotList('math',21), russian:shotList('russian',16), physics:shotList('physics',1) };
+  var SHOTS={ math:shotList('math',21), russian:shotList('russian',9), physics:shotList('physics',8) };
   function openShots(key){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.btn-rev').forEach(function(b){
@@ -1007,19 +1018,32 @@
   document.addEventListener('keydown',function(e){if(!modal.classList.contains('open'))return;
     if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
 
-  /* инлайн-карусель отзывов (стрелки ←/→) */
-  var row=document.getElementById('revRow');
-  if(row){
-    row.innerHTML=DATA[0].map(function(s){return '<div class="r-card"><div class="r-score">'+s.score+' <em>'+(s.unit||'/ 100')+'</em></div><div class="r-sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';}).join('');
-    var idx=0;
+  function initCarousel(row,prevBtn,nextBtn){
+    if(!row)return; var idx=0;
     function unit(){var c=row.querySelector('.r-card');return c?c.getBoundingClientRect().width+26:320;}
     function maxIdx(){var vp=row.parentElement.clientWidth;var per=Math.max(1,Math.round(vp/unit()));return Math.max(0,row.children.length-per);}
     function apply(){idx=Math.max(0,Math.min(idx,maxIdx()));row.style.transform='translateX(-'+(idx*unit())+'px)';}
-    var rp=document.getElementById('rowPrev'),rn=document.getElementById('rowNext');
-    if(rp)rp.addEventListener('click',function(){idx--;apply();});
-    if(rn)rn.addEventListener('click',function(){idx++;apply();});
+    if(prevBtn)prevBtn.addEventListener('click',function(){idx--;apply();});
+    if(nextBtn)nextBtn.addEventListener('click',function(){idx++;apply();});
     window.addEventListener('resize',function(){idx=0;apply();});apply();
   }
+  function cardHTML(s){return '<div class="r-card"><div class="r-score">'+s.score+' <em>'+(s.unit||'/ 100')+'</em></div><div class="r-sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';}
+  var row=document.getElementById('revRow');
+  if(row) row.innerHTML=DATA[0].map(cardHTML).join('');
+  initCarousel(row,document.getElementById('rowPrev'),document.getElementById('rowNext'));
+  var COURSE=[
+    {score:'5',unit:'/ 5',sub:'ОГЭ · с сопровождением',txt:'Брала курс с сопровождением у Владислава Эдуардовича. Очень удобный формат: короткие видео по 2–3 минуты, где разбирается каждое задание. Посмотрела — сразу делала практику и отправляла на проверку. Если что-то было непонятно, писала — преподаватель всегда отвечал и объяснял ещё раз. В итоге сдала на 5! Огромное спасибо, рекомендую!',who:'Ученица'},
+    {score:'4',unit:'/ 5',sub:'ОГЭ · базовый',txt:'Покупал базовый курс. Понравилось, что всё чётко и без лишнего — короткие видео конкретно под задания ОГЭ. Я часто на тренировках и сборах, не всегда есть время, а тут можно в любой момент открыть и позаниматься. Задавал вопросы — Владислав Эдуардович всегда отвечал. Сдал на 4, для меня это хороший результат. Очень благодарен за ваш труд!',who:'Ученик'},
+    {score:'5',unit:'/ 5',sub:'ОГЭ · премиум',txt:'Занималась на премиум-курсе у Владислава Эдуардовича. Больше всего понравилось, что есть постоянная связь и контроль — ты не остаёшься один. Если начинала переживать, он спокойно всё объяснял и настраивал. Плюс короткие видео очень удобные. В итоге написала математику на 5! Отдельное спасибо за поддержку перед экзаменом 🤍',who:'Ученица'},
+    {score:'5',unit:'/ 5',sub:'ОГЭ · с сопровождением',txt:'Моя дочь проходила курс с сопровождением у Владислава Эдуардовича. Формат очень удачный: материал разбит на небольшие видео, после каждого задания — практика. Была обратная связь и проверка, преподаватель всегда на связи. Ребёнок стал увереннее. Экзамен сдан на 5! Мы все рады!',who:'Мама ученицы'},
+    {score:'5',unit:'/ 5',sub:'ОГЭ · премиум',txt:'Проходила обучение по премиуму, потому что понимала, что сама не вытяну. Не пожалела! Все задания разбиты на короткие видео, можно заниматься в любое время — я часто уезжала на соревнования, и это реально спасало. Если что-то не понимала — писала, всегда помогали. Сдала математику на 5! Вы лучший 🫶🏽',who:'Ученица'},
+    {score:'4',unit:'/ 5',sub:'ОГЭ · базовый',txt:'Сын занимался на базовом курсе у Владислава Эдуардовича. Понравилась структура: короткие объяснения и сразу практика, при необходимости можно задать вопрос. Были и общие созвоны, где разбирали моменты. Экзамен сдан на 4. Спасибо, Владислав! Продолжаем обучение с вами в 10 классе!',who:'Мама ученика'},
+    {score:'5',unit:'/ 5',sub:'ОГЭ · с сопровождением',txt:'Брал курс с сопровождением. Удобно, что не нужно тратить много времени за раз: посмотрел короткое видео, сделал задание — и всё. Если что-то не понял, объяснят ещё раз. Плюс дружеская атмосфера на созвонах, без напряга. Сдал на 5, хотя изначально был не уверен. Были и бесплатные занятия в студии, где разбирали задания уровня С.',who:'Ученик'},
+    {score:'5',unit:'/ 5',sub:'ОГЭ · с сопровождением',txt:'Хочу поблагодарить Владислава Эдуардовича за экзаменационный курс. Дочь занималась в комфортном темпе, в любое удобное время. Формат маленьких видеоуроков оказался очень эффективным, была постоянная обратная связь и поддержка. Результат — 5! Спасибо за работу, рекомендуем! Замечательный преподаватель!',who:'Мама ученицы'}
+  ];
+  var crow=document.getElementById('courseRow');
+  if(crow) crow.innerHTML=COURSE.map(cardHTML).join('');
+  initCarousel(crow,document.getElementById('coursePrev'),document.getElementById('courseNext'));
 
   /* фон: дрейфующая сеть формул/символов */
   var cv=document.getElementById('bg-formulas');

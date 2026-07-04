@@ -1,2 +1,0 @@
-To https://github.com/grach5/akademia-znaniy.git
-   6254eb1..437c36c  HEAD -> main

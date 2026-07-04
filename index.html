@@ -335,6 +335,11 @@
   .rev-row{display:flex;gap:26px;transition:transform .55s cubic-bezier(.2,.7,.2,1);will-change:transform}
   .rev-row>.r-card{flex:0 0 300px}
   @media(max-width:560px){.rev-row>.r-card{flex:0 0 100%}}
+  .g-card{flex:0 0 auto;position:relative;overflow:hidden}
+  .g-card img{display:block;width:clamp(220px,64vw,290px);aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);box-shadow:0 22px 55px rgba(0,0,0,.55);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .g-card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 rgba(225,6,0,.6);transition:box-shadow .4s;pointer-events:none}
+  .g-card:hover img{transform:scale(1.06)}
+  .g-card:hover::after{box-shadow:inset 0 0 0 2px rgba(225,6,0,.6)}
   .rev-rowctrl{display:flex;justify-content:center;gap:18px;margin-top:24px}
 
   /* ===== STICKY MOBILE CTA ===== */
@@ -504,6 +509,7 @@
       <a href="#process">Этапы</a>
       <a href="#teachers">Преподаватели</a>
       <a href="#reviews">Отзывы</a>
+      <a href="#gallery">Фотоальбом</a>
       <a href="#course">Курс</a>
       <a href="#contact">Контакты</a>
     </nav>
@@ -531,7 +537,8 @@
           <div class="seal" role="img" aria-label="Гарантия системного результата"><span>Гарантия</span><span class="seal-big" aria-hidden="true">✓</span><span>результата</span></div>
           <button class="excl" data-opens="founder-text1" aria-label="Подробнее — текст 1">!</button>
           <figure class="photo hero-photo">
-            <img src="img/founder.jpg" alt="Дубровский Владислав Эдуардович — основатель репетиторского центра «Академия Знаний»">
+            <!-- Замените на фото основателя: <img src="founder.jpg" alt="Основатель репетиторского центра «Академия Знаний»"> -->
+            <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя<br><small style="opacity:.6">вставьте изображение сюда</small></div>
           </figure>
         </div>
       </div>
@@ -709,6 +716,25 @@
 
 <div class="wrap"><div class="divider"></div></div>
 
+<!-- ============ ФОТОАЛЬБОМ ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head ro">
+      <div class="eyebrow">Фотоальбом</div>
+      <h2>Наши ученики <em>в&nbsp;студии</em></h2>
+    </div>
+    <div class="rev-carousel ro">
+      <div class="rev-viewport"><div class="rev-row g-row" id="galleryRow"></div></div>
+      <div class="rev-rowctrl">
+        <button class="rev-arrow" id="galPrev" type="button" aria-label="Предыдущее фото">‹</button>
+        <button class="rev-arrow" id="galNext" type="button" aria-label="Следующее фото">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
 <!-- ============ COURSE ============ -->
 <section id="course">
   <div class="wrap">
@@ -717,7 +743,8 @@
         <div class="cutout" style="display:block">
           <div class="plate course-plate"></div>
           <figure class="photo course-photo">
-            <img src="img/studio.jpg" alt="Занятие в студии «Академия Знаний» — подготовка к ОГЭ по математике">
+            <!-- <img src="course.jpg" alt="Курс по подготовке к ОГЭ"> -->
+            <div class="ph-hint"><i aria-hidden="true">◳</i>Фото основателя<br><small style="opacity:.6">для блока курса</small></div>
           </figure>
         </div>
         <div class="course-copy">
@@ -1020,7 +1047,7 @@
 
   function initCarousel(row,prevBtn,nextBtn){
     if(!row)return; var idx=0;
-    function unit(){var c=row.querySelector('.r-card');return c?c.getBoundingClientRect().width+26:320;}
+    function unit(){var c=row.children[0];return c?c.getBoundingClientRect().width+26:320;}
     function maxIdx(){var vp=row.parentElement.clientWidth;var per=Math.max(1,Math.round(vp/unit()));return Math.max(0,row.children.length-per);}
     function apply(){idx=Math.max(0,Math.min(idx,maxIdx()));row.style.transform='translateX(-'+(idx*unit())+'px)';}
     if(prevBtn)prevBtn.addEventListener('click',function(){idx--;apply();});
@@ -1044,6 +1071,12 @@
   var crow=document.getElementById('courseRow');
   if(crow) crow.innerHTML=COURSE.map(cardHTML).join('');
   initCarousel(crow,document.getElementById('coursePrev'),document.getElementById('courseNext'));
+
+  /* фотоальбом: листаемая галерея фото учеников */
+  var GALN=24;
+  var grow=document.getElementById('galleryRow');
+  if(grow){ var gh=''; for(var gi=1;gi<=GALN;gi++){ gh+='<div class="g-card"><img loading="lazy" src="gallery/'+gi+'.jpg" alt="Ученики центра «Академия Знаний» в студии"></div>'; } grow.innerHTML=gh; }
+  initCarousel(grow,document.getElementById('galPrev'),document.getElementById('galNext'));
 
   /* фон: дрейфующая сеть формул/символов */
   var cv=document.getElementById('bg-formulas');

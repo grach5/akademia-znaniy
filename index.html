@@ -335,11 +335,24 @@
   .rev-row{display:flex;gap:26px;transition:transform .55s cubic-bezier(.2,.7,.2,1);will-change:transform}
   .rev-row>.r-card{flex:0 0 300px}
   @media(max-width:560px){.rev-row>.r-card{flex:0 0 100%}}
-  .g-card{flex:0 0 auto;position:relative;overflow:hidden}
+  .g-card{flex:0 0 auto;position:relative;overflow:hidden;display:block;background:none;border:0;padding:0;font:inherit;cursor:pointer}
   .g-card img{display:block;width:clamp(220px,64vw,290px);aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);box-shadow:0 22px 55px rgba(0,0,0,.55);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .g-card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 rgba(225,6,0,.6);transition:box-shadow .4s;pointer-events:none}
   .g-card:hover img{transform:scale(1.06)}
   .g-card:hover::after{box-shadow:inset 0 0 0 2px rgba(225,6,0,.6)}
+  .g-card .zoom{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;background:rgba(10,10,10,.72);border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;opacity:0;transform:scale(.8);transition:opacity .35s,transform .35s;pointer-events:none}
+  .g-card:hover .zoom{opacity:1;transform:scale(1)}
+  .tg-course{margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;background:var(--black-2);border:1px solid var(--line);padding:36px 40px;position:relative;overflow:hidden}
+  .tg-course::after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;background:var(--red);opacity:.07;transform:rotate(12deg)}
+  .tg-course-txt{max-width:640px;position:relative;z-index:1}
+  .tg-course-txt h3{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3vw,34px);line-height:1.1;margin:14px 0 10px}
+  .tg-course-txt h3 em{color:var(--red);font-style:italic}
+  .tg-course-txt p{color:var(--grey);font-size:15px;line-height:1.6;margin:0}
+  .tg-course .btn{position:relative;z-index:1;white-space:nowrap}
+  @media(max-width:560px){.tg-course{padding:28px 24px}}
+  .foot-contacts{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+  .foot-contacts a{color:var(--grey);text-decoration:none;transition:color .3s}
+  .foot-contacts a:hover{color:var(--red)}
   .rev-rowctrl{display:flex;justify-content:center;gap:18px;margin-top:24px}
 
   /* ===== STICKY MOBILE CTA ===== */
@@ -509,7 +522,7 @@
       <a href="#process">Этапы</a>
       <a href="#teachers">Преподаватели</a>
       <a href="#reviews">Отзывы</a>
-      <a href="#gallery">Фотоальбом</a>
+      <a href="#gallery">Учебный лайф</a>
       <a href="#course">Курс</a>
       <a href="#contact">Контакты</a>
     </nav>
@@ -645,7 +658,7 @@
             </figure>
           </div>
           <div class="t-meta">
-            <div class="subj">Физика</div>
+            <div class="subj">Физика&nbsp;|&nbsp;Математика</div>
             <h3>Лобанов<br>Вячеслав Олегович</h3>
             <span class="t-exp">Опыт на&nbsp;практике <b>более 10 лет</b></span>
           </div>
@@ -721,7 +734,7 @@
   <div class="wrap">
     <div class="sec-head ro">
       <div class="eyebrow">Фотоальбом</div>
-      <h2>Наши ученики <em>в&nbsp;студии</em></h2>
+      <h2>Учебный лайф <em>в&nbsp;студии</em></h2>
     </div>
     <div class="rev-carousel ro">
       <div class="rev-viewport"><div class="rev-row g-row" id="galleryRow"></div></div>
@@ -848,6 +861,15 @@
         </div>
       </div>
 
+    <div class="tg-course ro">
+      <div class="tg-course-txt">
+        <div class="eyebrow">Материалы курса</div>
+        <h3>Весь материал&nbsp;— в&nbsp;закрытом <em>Telegram-канале</em></h3>
+        <p>Видео-разборы заданий, практикум и&nbsp;сопровождение собраны в&nbsp;одном месте. Доступ открывается после записи на&nbsp;курс.</p>
+      </div>
+      <a href="https://t.me/+QlPl8_TxE2thZWIy" target="_blank" rel="noopener" class="btn tg-btn">Перейти в&nbsp;Telegram-канал</a>
+    </div>
+
     <div class="why-course ro">
       <div class="eyebrow">Почему курс</div>
       <h3>Почему курс выбирают <em>вместо индивидуальных занятий</em></h3>
@@ -885,14 +907,15 @@
       <div class="script">Звони, пиши, спрашивай</div>
       <h2>Всегда на&nbsp;связи&nbsp;— <em>ответим</em> на&nbsp;любой вопрос</h2>
       <div class="contact-actions">
-        <a href="tel:+70000000000" class="btn">Позвонить</a>
-        <a href="https://wa.me/70000000000" class="btn">Написать в&nbsp;мессенджер</a>
+        <a href="tel:+79626788882" class="btn">Позвонить</a>
+        <a href="https://wa.me/79626788882" target="_blank" rel="noopener" class="btn">WhatsApp</a>
+        <a href="https://t.me/vlad_dubrovsky" target="_blank" rel="noopener" class="btn">Telegram</a>
       </div>
       <div class="channels">
-        <a href="tel:+70000000000"><span class="d" aria-hidden="true"></span>+7 (000) 000-00-00</a>
-        <a href="https://t.me/" target="_blank" rel="noopener"><span class="d" aria-hidden="true"></span>Telegram</a>
-        <a href="https://wa.me/70000000000" target="_blank" rel="noopener"><span class="d" aria-hidden="true"></span>WhatsApp</a>
-        <a href="mailto:info@example.com"><span class="d" aria-hidden="true"></span>info@example.com</a>
+        <a href="tel:+79626788882"><span class="d" aria-hidden="true"></span>+7&nbsp;962&nbsp;678&nbsp;88&nbsp;82</a>
+        <a href="https://t.me/vlad_dubrovsky" target="_blank" rel="noopener"><span class="d" aria-hidden="true"></span>Telegram&nbsp;· @vlad_dubrovsky</a>
+        <a href="https://wa.me/79626788882" target="_blank" rel="noopener"><span class="d" aria-hidden="true"></span>WhatsApp</a>
+        <a href="https://www.instagram.com/_academy.ak_" target="_blank" rel="noopener"><span class="d" aria-hidden="true"></span>Instagram&nbsp;· @_academy.ak_</a>
       </div>
     </div>
   </div>
@@ -902,13 +925,18 @@
   <div class="wrap foot-row">
     <span class="brand">Академия <b>Знаний</b></span>
     <span>Репетиторский центр · Подготовка к&nbsp;ОГЭ и&nbsp;ЕГЭ</span>
+    <span class="foot-contacts">
+      <a href="tel:+79626788882">+7&nbsp;962&nbsp;678&nbsp;88&nbsp;82</a>
+      <a href="https://t.me/vlad_dubrovsky" target="_blank" rel="noopener">@vlad_dubrovsky</a>
+      <a href="https://www.instagram.com/_academy.ak_" target="_blank" rel="noopener">@_academy.ak_</a>
+    </span>
     <span>© 2026 · Все права защищены</span>
   </div>
 </footer>
 
 <!-- ============ STICKY MOBILE CTA ============ -->
 <div class="mcta" aria-label="Быстрые действия">
-  <a href="tel:+70000000000" class="btn">Позвонить</a>
+  <a href="tel:+79626788882" class="btn">Позвонить</a>
   <a href="#contact" class="btn">Записаться</a>
 </div>
 
@@ -1009,26 +1037,29 @@
   var modal=document.getElementById('revModal'),track=document.getElementById('revTrack'),
       dots=document.getElementById('revDots'),cur=0,set=[];
   function loadSlide(i){var sl=track.querySelectorAll('.rev-slide')[i];if(!sl)return;var im=sl.querySelector('img[data-src]');if(im){im.src=im.getAttribute('data-src');im.removeAttribute('data-src');}}
-  function render(){
+  function render(start){
+    start=start||0;
     track.innerHTML=set.map(function(s,i){
       var inner = s.empty
         ? '<div class="rev-empty">Скриншоты отзывов скоро появятся.</div>'
         : s.img
           ? '<div class="rev-shot"><img data-src="'+s.img+'" alt="Скриншот отзыва ученика"></div>'
           : '<div class="rev-card"><div class="score">'+s.score+' <em>'+(s.unit||'/ 100')+'</em></div><div class="sub">'+s.sub+'</div><p>«'+s.txt+'»</p><div class="who"><b>'+s.who+'</b></div></div>';
-      return '<div class="rev-slide'+(i===0?' active':'')+'">'+inner+'</div>';
+      return '<div class="rev-slide'+(i===start?' active':'')+'">'+inner+'</div>';
     }).join('');
-    dots.innerHTML='<span class="rev-count">1 / '+set.length+'</span>';
-    cur=0;loadSlide(0);loadSlide(1);
+    dots.innerHTML='<span class="rev-count">'+(start+1)+' / '+set.length+'</span>';
+    cur=start;loadSlide(start);loadSlide((start+1)%set.length);loadSlide((start-1+set.length)%set.length);
   }
   function show(i){cur=(i+set.length)%set.length;
     track.querySelectorAll('.rev-slide').forEach(function(el,k){el.classList.toggle('active',k===cur);});
     loadSlide(cur);loadSlide((cur+1)%set.length);loadSlide((cur-1+set.length)%set.length);
     var c=dots.querySelector('.rev-count');if(c)c.textContent=(cur+1)+' / '+set.length;}
-  function open(idx){set=DATA[idx]||DATA[0];render();modal.classList.add('open');document.body.style.overflow='hidden';}
+  function setTitle(html){var rt=document.querySelector('#revModal .rt');if(rt)rt.innerHTML=html;}
+  function open(idx){set=DATA[idx]||DATA[0];setTitle('Отзывы <em>учеников</em>');render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function shotList(subj,n){var a=[];for(var i=1;i<=n;i++)a.push('reviews/'+subj+'/'+i+'.jpg');return a;}
-  var SHOTS={ math:shotList('math',21), russian:shotList('russian',9), physics:shotList('physics',8) };
-  function openShots(key){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];render();modal.classList.add('open');document.body.style.overflow='hidden';}
+  function galList(n){var a=[];for(var i=1;i<=n;i++)a.push('gallery/'+i+'.jpg');return a;}
+  var SHOTS={ math:shotList('math',21), russian:shotList('russian',9), physics:shotList('physics',8), gallery:galList(24) };
+  function openShots(key,start){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];setTitle(key==='gallery'?'Учебный <em>лайф</em>':'Отзывы <em>учеников</em>');render(start||0);modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.btn-rev').forEach(function(b){
     b.addEventListener('click',function(){
@@ -1075,7 +1106,9 @@
   /* фотоальбом: листаемая галерея фото учеников */
   var GALN=24;
   var grow=document.getElementById('galleryRow');
-  if(grow){ var gh=''; for(var gi=1;gi<=GALN;gi++){ gh+='<div class="g-card"><img loading="lazy" src="gallery/'+gi+'.jpg" alt="Ученики центра «Академия Знаний» в студии"></div>'; } grow.innerHTML=gh; }
+  if(grow){ var gh=''; for(var gi=1;gi<=GALN;gi++){ gh+='<button class="g-card" type="button" data-gi="'+(gi-1)+'" aria-label="Открыть фото на весь экран"><img loading="lazy" src="gallery/'+gi+'.jpg" alt="Ученики центра «Академия Знаний» в студии"><span class="zoom" aria-hidden="true">⤢</span></button>'; } grow.innerHTML=gh;
+    grow.querySelectorAll('.g-card').forEach(function(c){ c.addEventListener('click',function(){ openShots('gallery', parseInt(c.getAttribute('data-gi'),10)||0); }); });
+  }
   initCarousel(grow,document.getElementById('galPrev'),document.getElementById('galNext'));
 
   /* фон: дрейфующая сеть формул/символов */

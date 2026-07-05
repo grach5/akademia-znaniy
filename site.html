@@ -1081,7 +1081,7 @@
   function open(idx){set=DATA[idx]||DATA[0];setTitle('Отзывы <em>учеников</em>');render();modal.classList.add('open');document.body.style.overflow='hidden';}
   function shotList(subj,n){var a=[];for(var i=1;i<=n;i++)a.push('reviews/'+subj+'/'+i+'.jpg');return a;}
   function galList(n){var a=[];for(var i=1;i<=n;i++)a.push('gallery/'+i+'.jpg');return a;}
-  var SHOTS={ math:shotList('math',21), russian:shotList('russian',9), physics:shotList('physics',8), gallery:galList(24) };
+  var SHOTS={ math:shotList('math',21), russian:shotList('russian',9), physics:shotList('physics',8), gallery:galList(20) };
   function openShots(key,start){var imgs=SHOTS[key]||[];set=imgs.length?imgs.map(function(src){return {img:src};}):[{empty:true}];setTitle(key==='gallery'?'Учебный <em>лайф</em>':'Отзывы <em>учеников</em>');render(start||0);modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.btn-rev').forEach(function(b){
@@ -1127,7 +1127,7 @@
   initCarousel(crow,document.getElementById('coursePrev'),document.getElementById('courseNext'));
 
   /* фотоальбом: листаемая галерея фото учеников */
-  var GALN=24;
+  var GALN=20;
   var grow=document.getElementById('galleryRow');
   if(grow){ var gh=''; for(var gi=1;gi<=GALN;gi++){ gh+='<button class="g-card" type="button" data-gi="'+(gi-1)+'" aria-label="Открыть фото на весь экран"><img loading="lazy" src="gallery/'+gi+'.jpg" alt="Ученики центра «Академия Знаний» в студии"><span class="zoom" aria-hidden="true">⤢</span></button>'; } grow.innerHTML=gh;
     grow.querySelectorAll('.g-card').forEach(function(c){ c.addEventListener('click',function(){ openShots('gallery', parseInt(c.getAttribute('data-gi'),10)||0); }); });

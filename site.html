@@ -493,10 +493,10 @@
     background:
       radial-gradient(130% 95% at 50% -12%,rgba(225,6,0,.26),transparent 58%),
       linear-gradient(180deg,#18101a,var(--black-2) 55%);
-    transform:scale(1.045);z-index:3;
+    z-index:3;
     animation:premGlow 3.6s ease-in-out infinite;
   }
-  .tier.prem:hover{transform:scale(1.045) translateY(-10px)}
+  .tier.prem:hover{transform:translateY(-8px)}
   /* золото-красная светящаяся рамка */
   .tier.prem::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1.5px;
     background:linear-gradient(135deg,#f6d488,var(--red) 45%,#c40600 60%,#f6d488);
@@ -511,7 +511,6 @@
   .tier .badge-prem{background:linear-gradient(135deg,#f8dc96,#e0a23a);color:#2a1400;font-weight:700;box-shadow:0 10px 26px rgba(246,212,136,.4);letter-spacing:.08em}
   .tier.prem .btn{background:linear-gradient(135deg,#ff2b26,#b00500);border-color:transparent;color:#fff;font-weight:600;box-shadow:0 16px 38px rgba(225,6,0,.45)}
   .tier.prem .btn:hover{filter:brightness(1.1);transform:none}
-  @media(max-width:900px){.tier.prem{transform:none}.tier.prem:hover{transform:translateY(-8px)}}
   .tier .medal{width:52px;height:52px;border-radius:50%;background:rgba(225,6,0,.1);border:1px solid rgba(225,6,0,.3);display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1}
   .tier .tname{font-family:var(--serif);font-size:25px;font-weight:500;margin:18px 0 6px}
   .tier .tdesc{font-size:13.5px;line-height:1.45;color:var(--grey);min-height:38px}

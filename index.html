@@ -426,6 +426,11 @@
   .btn.solid{background:var(--red);border-color:var(--red)}
   .btn.solid::before{background:var(--red-deep)}
   .nav .btn{padding:11px 22px}
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0;background:none;border:0;cursor:pointer}
+  .burger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s;margin:0 auto}
+  body.nav-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  body.nav-open .burger span:nth-child(2){opacity:0}
+  body.nav-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
   /* ===== HERO ===== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden}
@@ -589,7 +594,11 @@
     .hero-photo-wrap{max-width:420px;margin:10px auto 0}
     .teachers{grid-template-columns:1fr}
     .course-grid{padding:36px}
-    .nav-links{display:none}
+    .burger{display:flex}
+    .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--black-2);flex-direction:column;gap:0;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .4s cubic-bezier(.2,.7,.2,1);font-size:15.5px;z-index:60}
+    body.nav-open .nav-links{transform:translateY(0)}
+    .nav-links a{padding:14px 24px;color:var(--white)}
+    .nav-links a::after{display:none}
     section{padding:84px 0}
     .price-badge{left:0}
   }
@@ -835,15 +844,16 @@
   <div class="wrap nav">
     <a class="brand" href="#top">Академия <b>Знаний</b></a>
     <nav class="nav-links" aria-label="Основная навигация">
-      <a href="#top">О центре</a>
-      <a href="#process">Этапы</a>
-      <a href="#teachers">Преподаватели</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#gallery">Учебный лайф</a>
-      <a href="#course">Курс</a>
-      <a href="#contact">Контакты</a>
+      <a href="/akademia-znaniy/" class="active">Главная</a>
+      <a href="/akademia-znaniy/podgotovka-oge-matematika/">Математика</a>
+      <a href="/akademia-znaniy/repetitor-fizika-habarovsk/">Физика</a>
+      <a href="/akademia-znaniy/repetitor-russkiy-habarovsk/">Русский</a>
+      <a href="/akademia-znaniy/otzyvy/">Отзывы</a>
+      <a href="/akademia-znaniy/blog/">Блог</a>
+      <a href="/akademia-znaniy/kontakty/">Контакты</a>
     </nav>
-    <a href="#contact" class="btn">Записаться <span aria-hidden="true">→</span></a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="#contact" class="btn nav-cta">Записаться <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -1267,6 +1277,13 @@
     if(prog){var de=document.documentElement;var h=de.scrollHeight-de.clientHeight;prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';}
   };
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // мобильное меню (бургер)
+  var burger=document.getElementById('burger'), navLinks=document.querySelector('.nav-links');
+  if(burger&&navLinks){
+    burger.addEventListener('click',function(){var o=document.body.classList.toggle('nav-open');burger.setAttribute('aria-expanded',o?'true':'false');});
+    navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('nav-open');burger.setAttribute('aria-expanded','false');});});
+  }
 
   // reveal on scroll
   var io=new IntersectionObserver(function(es){

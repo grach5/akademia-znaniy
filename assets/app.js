@@ -47,6 +47,21 @@
     });
   });
 
+  // форма заявки на странице контактов -> открывает WhatsApp с готовым текстом
+  var leadForm = document.getElementById('leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var name = (leadForm.querySelector('[name="name"]').value || '').trim();
+      var phoneVal = (leadForm.querySelector('[name="phone"]').value || '').trim();
+      var msg = (leadForm.querySelector('[name="msg"]').value || '').trim();
+      var text = 'Здравствуйте! Меня зовут ' + name + '.' +
+        (phoneVal ? ' Мой телефон: ' + phoneVal + '.' : '') +
+        (msg ? ' ' + msg : '');
+      window.open('https://wa.me/79626788882?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    });
+  }
+
   // плавный скролл к якорям с учётом фиксированной шапки
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(ev){

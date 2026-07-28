@@ -551,7 +551,7 @@
 
   /* ===== BACKGROUND FORMULAS CANVAS ===== */
   #bg-formulas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.45}
-  header,section,footer,.mcta{position:relative;z-index:1}
+  section,footer,.mcta{position:relative;z-index:1}
 
   /* ===== HERO NAMING BLOCK ===== */
   .hero-center{text-align:center;width:100%}

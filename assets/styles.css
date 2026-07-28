@@ -420,7 +420,7 @@
   .course::before{content:"";position:absolute;right:-40px;top:-40px;width:260px;height:260px;border:1px solid rgba(225,6,0,.12);border-radius:50%}
   .course-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;padding:60px}
   .course-photo{width:100%;aspect-ratio:4/5;clip-path:polygon(3% 0,100% 2%,97% 100%,0 97%)}
-  .course-plate{inset:20px -20px -20px 20px;transform:rotate(3deg)}
+  .course-plate{inset:20px -45px -45px 20px;transform:rotate(3deg)}
   .course-grid h3{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4vw,56px);line-height:1.02;margin:14px 0 18px}
   .course-grid h3 em{color:var(--red);font-style:italic}
   .course p.desc{color:var(--grey);font-size:16px;line-height:1.75;max-width:480px;margin-bottom:30px}

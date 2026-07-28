@@ -317,6 +317,7 @@
   .cutout{position:relative;display:inline-block}
   .cutout .plate{
     position:absolute;background:var(--red);z-index:0;
+    background-size:cover;background-position:center;
   }
   .photo{
     position:relative;z-index:2;background:var(--black-3);overflow:hidden;

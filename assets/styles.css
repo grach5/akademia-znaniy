@@ -331,7 +331,7 @@
   .photo[data-shots]:focus-visible{outline:2px solid var(--red);outline-offset:3px}
   /* torn / cutout shape for hero portrait */
   .hero-photo{width:100%;aspect-ratio:4/5;clip-path:polygon(2% 0,100% 3%,97% 100%,0 96%);box-shadow:0 30px 80px rgba(0,0,0,.6)}
-  .hero-plate{inset:24px -22px -24px 24px;transform:rotate(3deg);clip-path:polygon(0 4%,100% 0,96% 100%,3% 95%)}
+  .hero-plate{inset:24px -45px -45px 24px;transform:rotate(3deg);clip-path:polygon(0 4%,100% 0,96% 100%,3% 95%)}
   .hero-stamp{
     position:absolute;z-index:3;right:-14px;top:-22px;background:var(--white);color:var(--black);
     font-family:var(--serif);font-style:italic;font-size:15px;padding:14px 18px;line-height:1.1;
@@ -397,7 +397,7 @@
   .t-card:hover{transform:translateY(-8px);border-color:rgba(225,6,0,.5)}
   .t-card-top{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:28px 30px 0}
   .t-photo{aspect-ratio:3/4;clip-path:polygon(0 3%,100% 0,96% 100%,2% 97%);position:relative}
-  .t-plate{inset:-10px 10px 10px -10px;transform:rotate(-4deg)}
+  .t-plate{inset:-20px 10px 10px -20px;transform:rotate(-4deg)}
   .t-meta .subj{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1;color:var(--red);margin-bottom:8px}
   .t-meta h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;margin-bottom:12px}
   .t-exp{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.04em;color:var(--white);background:rgba(225,6,0,.12);border:1px solid rgba(225,6,0,.35);padding:6px 12px;border-radius:30px}

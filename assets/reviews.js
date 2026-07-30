@@ -1,6 +1,6 @@
 /* Академия Знаний — модалка отзывов + карусели + галерея (общий файл для всех страниц) */
 (function(){
-  var B = window.__BASE__ || '/akademia-znaniy';
+  var B = (typeof window.__BASE__ === 'string') ? window.__BASE__ : '';
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
   }); }

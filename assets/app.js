@@ -58,9 +58,22 @@
       var text = 'Здравствуйте! Меня зовут ' + name + '.' +
         (phoneVal ? ' Мой телефон: ' + phoneVal + '.' : '') +
         (msg ? ' ' + msg : '');
+      ymGoal('form_submit');
       window.open('https://wa.me/79626788882?text=' + encodeURIComponent(text), '_blank', 'noopener');
     });
   }
+
+  // цели Яндекс.Метрики: клики по телефону, WhatsApp, Telegram
+  function ymGoal(name){ if (typeof window.ym === 'function') window.ym(111243476, 'reachGoal', name); }
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.addEventListener('click', function(){ ymGoal('phone_click'); });
+  });
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+    a.addEventListener('click', function(){ ymGoal('whatsapp_click'); });
+  });
+  document.querySelectorAll('a[href*="t.me/"]').forEach(function(a){
+    a.addEventListener('click', function(){ ymGoal('telegram_click'); });
+  });
 
   // плавный скролл к якорям с учётом фиксированной шапки
   document.querySelectorAll('a[href^="#"]').forEach(function(a){

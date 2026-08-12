@@ -59,20 +59,25 @@
         (phoneVal ? ' Мой телефон: ' + phoneVal + '.' : '') +
         (msg ? ' ' + msg : '');
       ymGoal('form_submit');
+      vkGoal('lead_form_submit');
       window.open('https://wa.me/79626788882?text=' + encodeURIComponent(text), '_blank', 'noopener');
     });
   }
 
-  // цели Яндекс.Метрики: клики по телефону, WhatsApp, Telegram
+  // цели Яндекс.Метрики и VK Ads (Top.Mail.Ru): клики по телефону, WhatsApp, Telegram
   function ymGoal(name){ if (typeof window.ym === 'function') window.ym(111243476, 'reachGoal', name); }
+  function vkGoal(name){
+    window._tmr = window._tmr || [];
+    window._tmr.push({id: '3786898', type: 'reachGoal', goal: name, start: (new Date()).getTime()});
+  }
   document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
-    a.addEventListener('click', function(){ ymGoal('phone_click'); });
+    a.addEventListener('click', function(){ ymGoal('phone_click'); vkGoal('phone_click'); });
   });
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
-    a.addEventListener('click', function(){ ymGoal('whatsapp_click'); });
+    a.addEventListener('click', function(){ ymGoal('whatsapp_click'); vkGoal('whatsapp_click'); });
   });
   document.querySelectorAll('a[href*="t.me/"]').forEach(function(a){
-    a.addEventListener('click', function(){ ymGoal('telegram_click'); });
+    a.addEventListener('click', function(){ ymGoal('telegram_click'); vkGoal('telegram_click'); });
   });
 
   // плавный скролл к якорям с учётом фиксированной шапки

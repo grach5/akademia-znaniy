@@ -18,6 +18,24 @@
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('nav-open');burger.setAttribute('aria-expanded','false');});});
   }
 
+  // уведомление об использовании cookie (152-ФЗ)
+  (function(){
+    var KEY='cookieConsentV1', consented=false;
+    try{ consented=!!localStorage.getItem(KEY); }catch(e){}
+    if(consented) return;
+    var base=(typeof window.__BASE__==='string')?window.__BASE__:'';
+    var el=document.createElement('div');
+    el.className='cookie-banner';
+    el.setAttribute('role','region');
+    el.setAttribute('aria-label','Уведомление об использовании файлов cookie');
+    el.innerHTML='<p class="cookie-banner__text">Мы используем файлы cookie и сервисы аналитики (Яндекс.Метрика, Top.Mail.Ru) для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с этим — подробнее в <a href="'+base+'/politika-konfidencialnosti/">политике конфиденциальности</a>.</p><button type="button" class="btn solid cookie-banner__accept">Хорошо</button>';
+    document.body.appendChild(el);
+    el.querySelector('.cookie-banner__accept').addEventListener('click',function(){
+      try{ localStorage.setItem(KEY,'1'); }catch(e){}
+      el.remove();
+    });
+  })();
+
   // появление при скролле
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
